@@ -8,8 +8,9 @@ import { currentCharacterSelector } from "./charactersSelectors";
 import { currentPlayerCardsSelector } from "./playersSelectors";
 import { hasCard } from "../../utils/playerCardUtils";
 import { hasActionsLeftSelector } from "./actionsSelectors";
+import { CityName } from "../../models/City";
 
-export const canDriveFerryToCitySelector = (targetCityName: string) =>
+export const canDriveFerryToCitySelector = (targetCityName: CityName) =>
   createSelector(
     hasActionsLeftSelector,
     currentCitySelector,

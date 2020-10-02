@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { City } from "../models/City";
 import { PositionContainer } from "./PositionContainer";
 import {
@@ -50,9 +50,13 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
     }
   };
 
+  const style: CSSProperties = {
+    color: city.color,
+  };
+
   return (
     <PositionContainer position={city.position}>
-      <div key={city.name} onClick={() => handleCityClick(city)}>
+      <div style={style} key={city.name} onClick={() => handleCityClick(city)}>
         {city.name}
         {city.hasResearchStation && <span> (RS)</span>}
       </div>
