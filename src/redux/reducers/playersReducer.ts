@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   addPlayer,
-  drawCard,
+  drawPlayerCard,
   takeDirectFlight,
   takeCharterFlight,
   buildResearchStation,
@@ -33,7 +33,7 @@ export const players = createReducer(intitialState, (builder) =>
         current: state.current ?? newPlayer?.playerName,
       };
     })
-    .addCase(drawCard, (state, { payload: { card, playerName } }) => ({
+    .addCase(drawPlayerCard, (state, { payload: { card, playerName } }) => ({
       ...state,
       list: state.list.map((p) =>
         p.playerName === playerName

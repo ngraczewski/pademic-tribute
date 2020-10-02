@@ -4,6 +4,7 @@ import {
   buildResearchStation,
   treatDisease,
   setCityPosition,
+  infectCity,
 } from "../actions";
 
 export const cities = createReducer(citiesData, (builder) =>
@@ -42,5 +43,22 @@ export const cities = createReducer(citiesData, (builder) =>
             }
           : city
       )
+    )
+    .addCase(
+      infectCity,
+      (state, { payload: { cityName, disease, infectionsCount } }) => {
+        console.log(cityName, disease, infectionsCount);
+        return state.map((c) =>
+          c.name === cityName
+            ? {
+                ...c,
+                diseases: {
+                  ...c.diseases,
+                  [disease]: c.diseases[disease] + infectionsCount,
+                },
+              }
+            : c
+        );
+      }
     )
 );

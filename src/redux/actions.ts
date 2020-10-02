@@ -26,6 +26,8 @@ import {
   currentCitySelector,
 } from "./selectors/citiesSelectors";
 import { Position } from "../models/Position";
+import { InfectionCard } from "../models/InfectionCard";
+import { infectionCardsSelector } from "./selectors/infectionCardsSelectors";
 
 export const USER_ACTION = "USER_ACTION";
 export const USER_MOVE_ACTION = `${USER_ACTION}_MOVE`;
@@ -42,10 +44,20 @@ export const addPlayer = createAction<{
   characterName: string;
 }>("ADD_PLAYER");
 
-export const drawCard = createAction<{
+export const drawPlayerCard = createAction<{
   playerName: string;
   card: PlayerCard;
-}>("DRAW_CARD");
+}>("DRAW_PLAYER_CARD");
+
+export const drawInfectionCard = createAction<{
+  card: InfectionCard;
+}>("DRAW_INFECTION_CARD");
+
+export const infectCity = createAction<{
+  cityName: CityName;
+  infectionsCount: number;
+  disease: Disease;
+}>("INFECT_CITY");
 
 export const driveOrFerry = createAction<UserMoveActionPayload>(
   `${USER_MOVE_ACTION}_DRIVE_FERRY`
@@ -115,7 +127,7 @@ export const startGameAction = ({
     );
     for (let j = 0; j < cardsPerPlayer; j++) {
       dispatch(
-        drawCard({
+        drawPlayerCard({
           playerName,
           card: cards[i * cardsPerPlayer + j],
         })
@@ -129,11 +141,62 @@ export const startGameAction = ({
     })
   );
 
+  const infectionCards = infectionCardsSelector(getState());
+
+  for (let i = 0; i < 3; i++) {
+    const infectionCard = infectionCards[i];
+    dispatch(
+      drawInfectionCard({
+        card: infectionCard,
+      })
+    );
+    dispatch(
+      infectCity({
+        cityName: infectionCard.cardName,
+        disease: infectionCard.disease,
+        infectionsCount: 3,
+      })
+    );
+  }
+
+  for (let i = 3; i < 6; i++) {
+    const infectionCard = infectionCards[i];
+    dispatch(
+      drawInfectionCard({
+        card: infectionCard,
+      })
+    );
+    dispatch(
+      infectCity({
+        cityName: infectionCard.cardName,
+        disease: infectionCard.disease,
+        infectionsCount: 2,
+      })
+    );
+  }
+
+  for (let i = 6; i < 9; i++) {
+    const infectionCard = infectionCards[i];
+    dispatch(
+      drawInfectionCard({
+        card: infectionCard,
+      })
+    );
+    dispatch(
+      infectCity({
+        cityName: infectionCard.cardName,
+        disease: infectionCard.disease,
+        infectionsCount: 1,
+      })
+    );
+  }
+
   dispatch(startGame());
 };
 
 export const endTurnAction = (): AppThunk => (dispatch, getState) => {
   const playerCards = playerCardsSelector(getState());
+  const infectionCards = infectionCardsSelector(getState());
   const currentPlayerName = currentPlayerNameSelector(getState());
 
   if (playerCards.length < 2) {
@@ -143,17 +206,33 @@ export const endTurnAction = (): AppThunk => (dispatch, getState) => {
 
   if (currentPlayerName) {
     dispatch(
-      drawCard({
+      drawPlayerCard({
         playerName: currentPlayerName,
         card: playerCards[0],
       })
     );
     dispatch(
-      drawCard({
+      drawPlayerCard({
         playerName: currentPlayerName,
         card: playerCards[1],
       })
     );
+
+    for (let i = 0; i < 2; i++) {
+      const infectionCard = infectionCards[i];
+      dispatch(
+        drawInfectionCard({
+          card: infectionCard,
+        })
+      );
+      dispatch(
+        infectCity({
+          cityName: infectionCard.cardName,
+          disease: infectionCard.disease,
+          infectionsCount: 1,
+        })
+      );
+    }
 
     dispatch(endTurn());
   }

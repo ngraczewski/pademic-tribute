@@ -12,10 +12,10 @@ export const citiesData: City[] = [
     neighbours: ["Chicago", "Tokio", "Manila", "Los Angeles"],
     hasResearchStation: true,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -34,10 +34,10 @@ export const citiesData: City[] = [
     ],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -50,10 +50,10 @@ export const citiesData: City[] = [
     neighbours: ["Chicago", "Waszyngton", "Nowy Jork"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -66,10 +66,10 @@ export const citiesData: City[] = [
     neighbours: ["Montreal", "Waszyngton", "Londyn", "Madryt"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -82,7 +82,7 @@ export const citiesData: City[] = [
     neighbours: ["Chicago", "Waszyngton", "Miami"],
     hasResearchStation: true,
     diseases: {
-      red: 3,
+      red: 0,
       black: 0,
       blue: 0,
       yellow: 0,
@@ -98,10 +98,10 @@ export const citiesData: City[] = [
     neighbours: ["Atlanta", "Montreal", "Nowy Jork", "Miami"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -114,10 +114,10 @@ export const citiesData: City[] = [
     neighbours: ["Nowy Jork", "Madryt", "Paryz", "Essen"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -130,10 +130,10 @@ export const citiesData: City[] = [
     neighbours: ["Londyn", "Paryz", "Mediolan", "Petersburg"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -146,10 +146,10 @@ export const citiesData: City[] = [
     neighbours: ["Essen", "Stambul", "Moskwa"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -162,10 +162,10 @@ export const citiesData: City[] = [
     neighbours: ["Nowy Jork", "Sao Paulo", "Londyn", "Paryz", "Algier"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -178,10 +178,10 @@ export const citiesData: City[] = [
     neighbours: ["Londyn", "Essen", "Mediolan", "Algier", "Madryt"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -194,10 +194,10 @@ export const citiesData: City[] = [
     neighbours: ["Essen", "Stambul", "Paryz"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -210,10 +210,10 @@ export const citiesData: City[] = [
     neighbours: ["San Francisco", "Sydney", "Chicago", "Meksyk"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -226,10 +226,10 @@ export const citiesData: City[] = [
     neighbours: ["San Francisco", "Chicago", "Miami", "Bogota", "Lima"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -242,10 +242,10 @@ export const citiesData: City[] = [
     neighbours: ["Meksyk", "Atlanta", "Waszyngton", "Bogota"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -258,10 +258,10 @@ export const citiesData: City[] = [
     neighbours: ["Meksyk", "Miami", "Lima", "Buenos Aires", "Sao Paulo"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -274,10 +274,10 @@ export const citiesData: City[] = [
     neighbours: ["Meksyk", "Bogota", "Santiago"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -290,10 +290,10 @@ export const citiesData: City[] = [
     neighbours: ["Lima"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -306,10 +306,10 @@ export const citiesData: City[] = [
     neighbours: ["Bogota", "Sao Paulo"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -322,10 +322,10 @@ export const citiesData: City[] = [
     neighbours: ["Bogota", "Buenos Aires", "Madryt", "Lagos"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -338,10 +338,10 @@ export const citiesData: City[] = [
     neighbours: ["Sao Paulo", "Chartum", "Kinszasa"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -354,10 +354,10 @@ export const citiesData: City[] = [
     neighbours: ["Lagos", "Kinszasa", "Johannesburg", "Kair"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -370,10 +370,10 @@ export const citiesData: City[] = [
     neighbours: ["Lagos", "Chartum", "Johannesburg"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -386,10 +386,10 @@ export const citiesData: City[] = [
     neighbours: ["Kinszasa", "Chartum"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -402,10 +402,10 @@ export const citiesData: City[] = [
     neighbours: ["Petersburg", "Stambul", "Teheran"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -418,10 +418,10 @@ export const citiesData: City[] = [
     neighbours: ["Moskwa", "Delhi", "Bagdad"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -434,10 +434,10 @@ export const citiesData: City[] = [
     neighbours: ["Mediolan", "Moskwa", "Algier", "Bagdad", "Kair"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -450,10 +450,10 @@ export const citiesData: City[] = [
     neighbours: ["Madryt", "Paryz", "Stambul", "Kair"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -466,10 +466,10 @@ export const citiesData: City[] = [
     neighbours: ["Algier", "Stambul", "Bagdad", "Rijad", "Chartum"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -482,10 +482,10 @@ export const citiesData: City[] = [
     neighbours: ["Stambul", "Teheran", "Karaczi", "Rijad", "Kair"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -498,10 +498,10 @@ export const citiesData: City[] = [
     neighbours: ["Kair", "Bagdad", "Karaczi"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -514,10 +514,10 @@ export const citiesData: City[] = [
     neighbours: ["Bagdad", "Teheran", "Delhi", "Mumbaj", "Rijad"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -530,10 +530,10 @@ export const citiesData: City[] = [
     neighbours: ["Teheran", "Karaczi", "Kalkuta", "Mumbaj", "Cennaj"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -546,10 +546,10 @@ export const citiesData: City[] = [
     neighbours: ["Delhi", "Hongkong", "Bangok", "Cennaj"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -562,10 +562,10 @@ export const citiesData: City[] = [
     neighbours: ["Karaczi", "Delhi", "Cennaj"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -578,10 +578,10 @@ export const citiesData: City[] = [
     neighbours: ["Mumbaj", "Delhi", "Kalkuta", "Bangok", "Dzakarta"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -594,10 +594,10 @@ export const citiesData: City[] = [
     neighbours: ["Seul", "Szanghaj"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -610,10 +610,10 @@ export const citiesData: City[] = [
     neighbours: ["Szanghaj", "Pekin", "Tokio"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -626,10 +626,10 @@ export const citiesData: City[] = [
     neighbours: ["Seul", "San Francisco", "Osaka", "Szanghaj"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -642,10 +642,10 @@ export const citiesData: City[] = [
     neighbours: ["Pekin", "Seul", "Tokio", "Tajpej", "Hongkong"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -658,10 +658,10 @@ export const citiesData: City[] = [
     neighbours: ["Tokio", "Tajpej"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -674,10 +674,10 @@ export const citiesData: City[] = [
     neighbours: ["Osaka", "Manila", "Hongkong", "Szanghaj"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -697,10 +697,10 @@ export const citiesData: City[] = [
     ],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -713,10 +713,10 @@ export const citiesData: City[] = [
     neighbours: ["Kalkuta", "Hongkong", "Cennaj", "Dzakarta", "Ho Chi Minh"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -729,10 +729,10 @@ export const citiesData: City[] = [
     neighbours: ["Bangok", "Hongkong", "Manila", "Dzakarta"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -751,10 +751,10 @@ export const citiesData: City[] = [
     ],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -767,10 +767,10 @@ export const citiesData: City[] = [
     neighbours: ["Cennaj", "Bangok", "Ho Chi Minh", "Sydney"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
   {
@@ -783,10 +783,10 @@ export const citiesData: City[] = [
     neighbours: ["Dzakarta", "Manila", "San Francisco"],
     hasResearchStation: false,
     diseases: {
-      red: random(3),
-      black: random(3),
-      blue: random(3),
-      yellow: random(3),
+      red: 0,
+      black: 0,
+      blue: 0,
+      yellow: 0,
     },
   },
 ];

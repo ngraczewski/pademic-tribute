@@ -75,11 +75,11 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
 
   const cityIndicatorStyle: CSSProperties = {
     position: "relative",
-    width: "24px",
-    height: "24px",
+    width: "10px",
+    height: "10px",
     borderRadius: "50%",
-    top: "-12px",
-    left: "-12px",
+    top: "-5px",
+    left: "-5px",
     backgroundColor: city.color,
   };
 
