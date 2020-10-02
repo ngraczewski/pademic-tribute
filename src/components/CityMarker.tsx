@@ -2,8 +2,8 @@ import React from "react";
 import { City } from "../models/City";
 import { PositionContainer } from "./PositionContainer";
 import {
-  driveFerryAction,
-  directFlightAction,
+  driveOrFerryAction,
+  takeDirectFlightAction,
   takeCharterFlightAction,
   takePrivateFlightAction,
 } from "../redux/actions";
@@ -40,9 +40,9 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
   const handleCityClick = (city: City) => {
     console.log(canTakeCharterFlightToCity);
     if (canDriveFerryToCity) {
-      dispatch(driveFerryAction(city));
+      dispatch(driveOrFerryAction(city));
     } else if (canFlightDirectlyToCity) {
-      dispatch(directFlightAction(city.name));
+      dispatch(takeDirectFlightAction(city.name));
     } else if (canTakeCharterFlightToCity) {
       dispatch(takeCharterFlightAction(city.name));
     } else if (canTakePrivateFlightToCity) {

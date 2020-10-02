@@ -1,12 +1,21 @@
 import { createReducer, AnyAction } from "@reduxjs/toolkit";
 import { endTurnAction, USER_ACTION } from "./actions";
 
-const initialState = {
+export type ActionsState = {
+  count: number;
+  total: number;
+};
+
+export type UserAction = {
+  type: string;
+};
+
+const initialState: ActionsState = {
   count: 4,
   total: 4,
 };
 
-export const isUserAction = (action: AnyAction): action is AnyAction =>
+export const isUserAction = (action: AnyAction): action is UserAction =>
   action.type.startsWith(USER_ACTION);
 
 export const actions = createReducer(initialState, (builder) =>

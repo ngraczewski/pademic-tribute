@@ -43,19 +43,19 @@ export const drawCard = createAction<{
   card: PlayerCard;
 }>("DRAW_CARD");
 
-export const driveFerry = createAction<UserMoveActionPayload>(
+export const driveOrFerry = createAction<UserMoveActionPayload>(
   `${USER_MOVE_ACTION}_DRIVE_FERRY`
 );
 
-export const directFlight = createAction<UserMoveActionPayload>(
+export const takeDirectFlight = createAction<UserMoveActionPayload>(
   `${USER_MOVE_ACTION}_DIRECT_FLIGHT`
 );
 
-export const charterFlight = createAction<UserMoveActionPayload>(
+export const takeCharterFlight = createAction<UserMoveActionPayload>(
   `${USER_MOVE_ACTION}_CHARTER_FLIGHT`
 );
 
-export const privateFlight = createAction<UserMoveActionPayload>(
+export const takePrivateFlight = createAction<UserMoveActionPayload>(
   `${USER_MOVE_ACTION}_PRIVATE_FLIGHT`
 );
 
@@ -72,7 +72,7 @@ export const treatDisease = createAction<{
 
 export const endTurnAction = createAction("END_TURN_ACTION");
 
-export const driveFerryAction = (city: City): AppThunk => (
+export const driveOrFerryAction = (city: City): AppThunk => (
   dispatch,
   getState
 ) => {
@@ -84,7 +84,7 @@ export const driveFerryAction = (city: City): AppThunk => (
 
   if (canDriveFerryToCity && currentCharacter && currentPlayerName) {
     dispatch(
-      driveFerry({
+      driveOrFerry({
         playerName: currentPlayerName,
         characterName: currentCharacter.characterName,
         targetCityName: city.name,
@@ -119,7 +119,7 @@ export const startGame = (): AppThunk => (dispatch, getState) => {
   }
 };
 
-export const directFlightAction = (targetCityName: string): AppThunk => (
+export const takeDirectFlightAction = (targetCityName: string): AppThunk => (
   dispatch,
   getState
 ) => {
@@ -131,7 +131,7 @@ export const directFlightAction = (targetCityName: string): AppThunk => (
 
   if (canFlightDirectlyToCity && currentPlayerName && currentCharacter) {
     dispatch(
-      directFlight({
+      takeDirectFlight({
         characterName: currentCharacter.characterName,
         targetCityName,
         originCityName: currentCharacter.cityName,
@@ -151,7 +151,7 @@ export const takeCharterFlightAction = (cityName: string): AppThunk => (
 
   if (canTakeCharterFlightToCity && currentPlayerName && currentCharacter) {
     dispatch(
-      charterFlight({
+      takeCharterFlight({
         characterName: currentCharacter.characterName,
         originCityName: currentCharacter.cityName,
         playerName: currentPlayerName,
@@ -173,7 +173,7 @@ export const takePrivateFlightAction = (cityName: string): AppThunk => (
 
   if (canTakePrivateFlightToCity && currentPlayerName && currentCharacter) {
     dispatch(
-      privateFlight({
+      takePrivateFlight({
         characterName: currentCharacter.characterName,
         originCityName: currentCharacter.cityName,
         playerName: currentPlayerName,

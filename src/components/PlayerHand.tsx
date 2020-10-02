@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CardType } from "../models/PlayerCard";
-import { directFlightAction } from "../redux/actions";
+import { takeDirectFlightAction } from "../redux/actions";
 import { currentPlayerSelector } from "../redux/selectors/playersSelectors";
 
 export const PlayerHand = (): JSX.Element => {
@@ -16,7 +16,7 @@ export const PlayerHand = (): JSX.Element => {
             return;
           }
 
-          dispatch(directFlightAction(card.cardName));
+          dispatch(takeDirectFlightAction(card.cardName));
         };
 
         return <div onClick={handleClick}>{card.cardName}</div>;

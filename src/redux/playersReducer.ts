@@ -2,8 +2,8 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   addPlayer,
   drawCard,
-  directFlight,
-  charterFlight,
+  takeDirectFlight,
+  takeCharterFlight,
   buildResearchStation,
 } from "./actions";
 import { Player } from "../models/Player";
@@ -44,7 +44,7 @@ export const players = createReducer(intitialState, (builder) =>
       ),
     }))
     .addCase(
-      directFlight,
+      takeDirectFlight,
       (state, { payload: { playerName, targetCityName } }) => ({
         ...state,
         list: state.list.map((p) =>
@@ -58,7 +58,7 @@ export const players = createReducer(intitialState, (builder) =>
       })
     )
     .addCase(
-      charterFlight,
+      takeCharterFlight,
       (state, { payload: { playerName, originCityName } }) => ({
         ...state,
         list: state.list.map((p) =>
