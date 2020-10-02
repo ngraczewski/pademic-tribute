@@ -52,6 +52,8 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
 
   const style: CSSProperties = {
     color: city.color,
+    zIndex: 1,
+    backgroundColor: "white",
   };
 
   return (

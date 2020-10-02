@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { City } from "../../models/City";
 import { currentCharacterSelector } from "./charactersSelectors";
+import { uniqueId, uniq } from "lodash";
 
 export const citiesSelector = (state: RootState) => state.cities;
 
@@ -33,4 +34,16 @@ export const currentCitySelector = createSelector(
       return citiesMap[currentCityName];
     }
   }
+);
+
+export const routesSelector = createSelector(citiesSelector, (cities) =>
+  uniq(
+    cities
+      .flatMap((city) =>
+        city.neighbours.map((neighbour) =>
+          [city.name, neighbour].sort().join("-")
+        )
+      )
+      .sort()
+  )
 );
