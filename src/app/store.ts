@@ -5,6 +5,7 @@ import { actions } from "../redux/reducers/actionsReducer";
 import { characters } from "../redux/reducers/charactersReducer";
 import { playerCards } from "../redux/reducers/playerCardsReducer";
 import { cures } from "../redux/reducers/curesReducer";
+import { gameStage } from "../redux/reducers/gameStageReducer";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     characters,
     playerCards,
     cures,
+    gameStage,
   },
 });
 

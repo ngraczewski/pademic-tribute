@@ -1,5 +1,5 @@
 import { createReducer, AnyAction } from "@reduxjs/toolkit";
-import { endTurnAction, USER_ACTION } from "../actions";
+import { endTurn, USER_ACTION } from "../actions";
 
 export type ActionsState = {
   count: number;
@@ -20,7 +20,7 @@ export const isUserAction = (action: AnyAction): action is UserAction =>
 
 export const actions = createReducer(initialState, (builder) =>
   builder
-    .addCase(endTurnAction, (state) => ({
+    .addCase(endTurn, (state) => ({
       ...state,
       count: state.total,
     }))

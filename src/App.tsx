@@ -3,15 +3,17 @@ import { Board } from "./components/Board";
 import { ActionsCounter } from "./components/ActionsCounter";
 import { useSelector } from "react-redux";
 import { PlayerHand } from "./components/PlayerHand";
-import { currentCharacterSelector } from "./redux/selectors/charactersSelectors";
 import { PlayerActions } from "./components/PlayerActions";
 import { GameConfig } from "./components/GameConfig";
+import { gameStageSelector } from "./redux/selectors/gameStageSelectors";
+import { GameStage } from "./models/GameStage";
 
 export const PandemicTribute = (): JSX.Element => {
-  const currentCharacter = useSelector(currentCharacterSelector);
+  const gameStage = useSelector(gameStageSelector);
   return (
     <>
-      {!!currentCharacter && (
+      {gameStage === GameStage.CONFIG && <GameConfig />}
+      {gameStage === GameStage.IN_PROGRESS && (
         <>
           <Board />
           <ActionsCounter />
@@ -19,7 +21,7 @@ export const PandemicTribute = (): JSX.Element => {
           <PlayerHand />
         </>
       )}
-      {!currentCharacter && <GameConfig />}
+      {gameStage === GameStage.LOST && <div>Game Over</div>}
     </>
   );
 };

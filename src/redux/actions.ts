@@ -6,7 +6,10 @@ import {
   currentCharacterSelector,
 } from "./selectors/charactersSelectors";
 import { sample, sampleSize } from "lodash";
-import { nonEpidemicPlayerCardsSelector } from "./selectors/playerCardsSelectors";
+import {
+  nonEpidemicPlayerCardsSelector,
+  playerCardsSelector,
+} from "./selectors/playerCardsSelectors";
 import { PlayerCard } from "../models/PlayerCard";
 import {
   canDriveFerryToCitySelector,
@@ -76,7 +79,11 @@ export const setCityPosition = createAction<{
   position: Position;
 }>("SET_CITY_POSITION");
 
-export const endTurnAction = createAction("END_TURN_ACTION");
+export const endTurn = createAction("END_TURN_ACTION");
+
+export const startGame = createAction("START_GAME");
+
+export const gameOver = createAction("GAME_OVER");
 
 export const shuffleEpidemicsIn = createAction<{
   epidemicsCount: number;
@@ -121,6 +128,35 @@ export const startGameAction = ({
       epidemicsCount: epidemics,
     })
   );
+
+  dispatch(startGame());
+};
+
+export const endTurnAction = (): AppThunk => (dispatch, getState) => {
+  const playerCards = playerCardsSelector(getState());
+  const currentPlayerName = currentPlayerNameSelector(getState());
+
+  if (playerCards.length < 2) {
+    dispatch(gameOver());
+    return;
+  }
+
+  if (currentPlayerName) {
+    dispatch(
+      drawCard({
+        playerName: currentPlayerName,
+        card: playerCards[0],
+      })
+    );
+    dispatch(
+      drawCard({
+        playerName: currentPlayerName,
+        card: playerCards[1],
+      })
+    );
+
+    dispatch(endTurn());
+  }
 };
 
 export const driveOrFerryAction = (city: City): AppThunk => (
