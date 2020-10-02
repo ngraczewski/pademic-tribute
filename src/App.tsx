@@ -20,9 +20,8 @@ export const PandemicTribute = (): JSX.Element => {
         <>
           <ActionsCounter />
           <PlayerActions />
-          <EndTurnButton />
           <PlayerHand />
-          <Board></Board>
+          <Board />
         </>
       )}
     </>

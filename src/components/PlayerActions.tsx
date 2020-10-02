@@ -1,30 +1,42 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { treatDiseaseAction } from "../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  treatDiseaseAction,
+  buildResearchStationAction,
+} from "../redux/actions";
 import { currentCitySelector } from "../redux/selectors/citiesSelectors";
-import { City } from "../models/City";
+import { Disease } from "../models/Disease";
+import { EndTurnButton } from "./EndTurnButton";
+import { canBuildResearchStationSelector } from "../redux/selectors/userActionsSelectors";
 
 export const PlayerActions = (): JSX.Element => {
-  const dispatch = useDispatch();
   const currentCity = useSelector(currentCitySelector);
+  const canBuildResearchStation = useSelector(canBuildResearchStationSelector);
 
-  const treatDisease = (disease: keyof City["diseases"]) =>
+  const dispatch = useDispatch();
+  const treatDisease = (disease: Disease) =>
     dispatch(treatDiseaseAction(disease));
+  const buildResearchStation = () => dispatch(buildResearchStationAction());
 
-  const diseases: (keyof City["diseases"])[] = [
-    "red",
-    "black",
-    "blue",
-    "yellow",
-  ];
+  const diseases: Disease[] = ["red", "black", "blue", "yellow"];
 
   return (
     <>
-      {diseases.map((d) =>
-        currentCity?.diseases[d] ? (
-          <button onClick={() => treatDisease(d)}>Treat {d}</button>
-        ) : null
-      )}
+      {diseases.map((d) => (
+        <button
+          disabled={!currentCity?.diseases[d]}
+          onClick={() => treatDisease(d)}
+        >
+          Treat {d}
+        </button>
+      ))}
+      <EndTurnButton />
+      <button
+        disabled={!canBuildResearchStation}
+        onClick={buildResearchStation}
+      >
+        Build RS
+      </button>
     </>
   );
 };
