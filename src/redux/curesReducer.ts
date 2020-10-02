@@ -1,11 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-export const initialState: {
+export type CuresState = {
   red: boolean;
   blue: boolean;
   black: boolean;
   yellow: boolean;
-} = {
+};
+
+export const initialState: CuresState = {
   black: false,
   blue: false,
   red: false,
