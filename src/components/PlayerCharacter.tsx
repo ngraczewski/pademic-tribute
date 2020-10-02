@@ -1,9 +1,9 @@
 import React from "react";
 import { PositionContainer } from "./PositionContainer";
 import { useSelector } from "react-redux";
-import { citySelector } from "../redux/selectors";
 import { characterSelector } from "../redux/selectors/charactersSelectors";
 import { playerSelector } from "../redux/selectors/playersSelectors";
+import { citySelector } from "../redux/selectors/citiesSelectors";
 
 type Props = {
   playerName: string;

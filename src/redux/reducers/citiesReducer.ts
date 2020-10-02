@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { citiesData } from "../data/cities";
-import { buildResearchStation, treatDisease } from "./actions";
+import { citiesData } from "../../data/cities";
+import { buildResearchStation, treatDisease } from "../actions";
 
 export const cities = createReducer(citiesData, (builder) =>
   builder

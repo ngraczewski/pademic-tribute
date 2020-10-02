@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import {
   actionsCountSelector,
   totalActionsCountSelector,
-} from "../redux/selectors";
+} from "../redux/selectors/actionsSelectors";
 
 export const ActionsCounter = (): JSX.Element => {
   const actionsLeft = useSelector(actionsCountSelector);

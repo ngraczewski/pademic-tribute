@@ -1,5 +1,5 @@
 import { createReducer, AnyAction } from "@reduxjs/toolkit";
-import { endTurnAction, USER_ACTION } from "./actions";
+import { endTurnAction, USER_ACTION } from "../actions";
 
 export type ActionsState = {
   count: number;

@@ -5,15 +5,15 @@ import {
   takeDirectFlight,
   takeCharterFlight,
   buildResearchStation,
-} from "./actions";
-import { Player } from "../models/Player";
+} from "../actions";
+import { Player } from "../../models/Player";
 
-type State = {
+type PlayersState = {
   list: Player[];
   current?: string;
 };
 
-const intitialState: State = {
+const intitialState: PlayersState = {
   list: [],
 };
 

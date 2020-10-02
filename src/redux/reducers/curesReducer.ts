@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { CureStage } from "../models/CureStage";
+import { CureStage } from "../../models/CureStage";
 
 export type CuresState = {
   red: CureStage;

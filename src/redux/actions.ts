@@ -15,13 +15,13 @@ import {
   canTakePrivateFlightToCitySelector,
   canBuildResearchStationSelector,
   canTreatDiseaseSelector,
-} from "./selectors/actionsSelectors";
+} from "./selectors/userActionsSelectors";
 import { currentPlayerNameSelector } from "./selectors/playersSelectors";
+import { Disease } from "../models/Disease";
 import {
   currentCityNameSelector,
   currentCitySelector,
 } from "./selectors/citiesSelectors";
-import { Disease } from "../models/Diseases";
 
 export const USER_ACTION = "USER_ACTION";
 export const USER_MOVE_ACTION = `${USER_ACTION}_MOVE`;
@@ -72,28 +72,6 @@ export const treatDisease = createAction<{
 
 export const endTurnAction = createAction("END_TURN_ACTION");
 
-export const driveOrFerryAction = (city: City): AppThunk => (
-  dispatch,
-  getState
-) => {
-  const canDriveFerryToCity = canDriveFerryToCitySelector(city.name)(
-    getState()
-  );
-  const currentPlayerName = currentPlayerNameSelector(getState());
-  const currentCharacter = currentCharacterSelector(getState());
-
-  if (canDriveFerryToCity && currentCharacter && currentPlayerName) {
-    dispatch(
-      driveOrFerry({
-        playerName: currentPlayerName,
-        characterName: currentCharacter.characterName,
-        targetCityName: city.name,
-        originCityName: currentCharacter.cityName,
-      })
-    );
-  }
-};
-
 export const startGame = (): AppThunk => (dispatch, getState) => {
   const notUsedCharacters = notUsedCharactersSelector(getState());
   const character = sample(notUsedCharacters);
@@ -115,6 +93,28 @@ export const startGame = (): AppThunk => (dispatch, getState) => {
           card,
         })
       )
+    );
+  }
+};
+
+export const driveOrFerryAction = (city: City): AppThunk => (
+  dispatch,
+  getState
+) => {
+  const canDriveFerryToCity = canDriveFerryToCitySelector(city.name)(
+    getState()
+  );
+  const currentPlayerName = currentPlayerNameSelector(getState());
+  const currentCharacter = currentCharacterSelector(getState());
+
+  if (canDriveFerryToCity && currentCharacter && currentPlayerName) {
+    dispatch(
+      driveOrFerry({
+        playerName: currentPlayerName,
+        characterName: currentCharacter.characterName,
+        targetCityName: city.name,
+        originCityName: currentCharacter.cityName,
+      })
     );
   }
 };

@@ -1,6 +1,6 @@
 import { createReducer, AnyAction } from "@reduxjs/toolkit";
-import { charactersData } from "../data/characters";
-import { USER_MOVE_ACTION, UserMoveActionPayload } from "./actions";
+import { charactersData } from "../../data/characters";
+import { USER_MOVE_ACTION, UserMoveActionPayload } from "../actions";
 
 export type UserMoveAction = {
   type: string;

@@ -13,7 +13,7 @@ import {
   canFlightDirectlyToCitySelector,
   canTakeCharterFlightSelector,
   canTakePrivateFlightToCitySelector,
-} from "../redux/selectors/actionsSelectors";
+} from "../redux/selectors/userActionsSelectors";
 
 type Props = {
   city: City;

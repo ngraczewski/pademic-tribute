@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { players } from "../redux/playersReducer";
-import { cities } from "../redux/citiesReducer";
-import { actions } from "../redux/actionsReducer";
-import { characters } from "../redux/charactersReducer";
-import { playerCards } from "../redux/playerCardsReducer";
-import { cures } from "../redux/curesReducer";
+import { players } from "../redux/reducers/playersReducer";
+import { cities } from "../redux/reducers/citiesReducer";
+import { actions } from "../redux/reducers/actionsReducer";
+import { characters } from "../redux/reducers/charactersReducer";
+import { playerCards } from "../redux/reducers/playerCardsReducer";
+import { cures } from "../redux/reducers/curesReducer";
 
 export const store = configureStore({
   reducer: {
