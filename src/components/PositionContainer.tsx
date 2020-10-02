@@ -38,18 +38,9 @@ export const PositionContainer = ({
 
     const handleMouseMove = (event: MouseEvent<HTMLDocument>) => {
       event.preventDefault();
-      console.log("mousemove");
 
       const deltaX = cursorPositionRef.current.clientX - event.clientX;
       const deltaY = cursorPositionRef.current.clientY - event.clientY;
-
-      console.log(
-        {
-          deltaX,
-          deltaY,
-        },
-        currentPositionRef.current
-      );
 
       cursorPositionRef.current = {
         clientX: event.clientX,

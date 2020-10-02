@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { City } from "../../models/City";
 import { currentCharacterSelector } from "./charactersSelectors";
-import { uniqueId, uniq } from "lodash";
+import { uniq } from "lodash";
 
 export const citiesSelector = (state: RootState) => state.cities;
 

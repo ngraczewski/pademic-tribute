@@ -1,5 +1,4 @@
-import { City, CityColor } from "../models/City";
-import { random } from "lodash";
+import { City } from "../models/City";
 
 export const citiesData: City[] = [
   {

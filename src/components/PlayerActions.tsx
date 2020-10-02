@@ -24,6 +24,7 @@ export const PlayerActions = (): JSX.Element => {
     <>
       {diseases.map((d) => (
         <button
+          key={d}
           disabled={!currentCity?.diseases[d]}
           onClick={() => treatDisease(d)}
         >

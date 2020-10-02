@@ -16,9 +16,6 @@ export const playerCards = createReducer(playerCardsData, (builder) =>
         Math.ceil(shuffled.length / epidemicsCount)
       );
 
-      console.log(Math.ceil(shuffled.length / epidemicsCount));
-      console.log(chunks);
-
       return chunks.flatMap((c) =>
         shuffle([
           ...c,

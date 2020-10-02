@@ -19,7 +19,11 @@ export const PlayerHand = (): JSX.Element => {
           dispatch(takeDirectFlightAction(card.cardName));
         };
 
-        return <div onClick={handleClick}>{card.cardName}</div>;
+        return (
+          <div key={card.cardName} onClick={handleClick}>
+            {card.cardName}
+          </div>
+        );
       })}
     </div>
   );

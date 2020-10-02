@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { characterSelector } from "../redux/selectors/charactersSelectors";
 import { playerSelector } from "../redux/selectors/playersSelectors";
 import { citySelector } from "../redux/selectors/citiesSelectors";
-import { noop } from "lodash";
 
 type Props = {
   playerName: string;

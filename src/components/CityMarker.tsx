@@ -41,7 +41,6 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
   );
 
   const handleCityClick = (city: City) => {
-    console.log(canTakeCharterFlightToCity);
     if (canDriveFerryToCity) {
       dispatch(driveOrFerryAction(city));
     } else if (canFlightDirectlyToCity) {

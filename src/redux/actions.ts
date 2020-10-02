@@ -5,7 +5,7 @@ import {
   notUsedCharactersSelector,
   currentCharacterSelector,
 } from "./selectors/charactersSelectors";
-import { sample, sampleSize } from "lodash";
+import { sampleSize } from "lodash";
 import {
   nonEpidemicPlayerCardsSelector,
   playerCardsSelector,
@@ -114,8 +114,6 @@ export const startGameAction = ({
   const cardsPerPlayer = Math.ceil(8 / players);
   const cardsToDraw = cardsPerPlayer * players;
   const cards = sampleSize(nonEpidemicPlayerCards, cardsToDraw);
-
-  console.log(cardsToDraw);
 
   for (let i = 0; i < players; i++) {
     const playerName = `Player ${i + 1}`;

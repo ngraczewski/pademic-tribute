@@ -24,10 +24,10 @@ export const Board = (): JSX.Element => {
   return (
     <div style={style}>
       {players.map((p) => (
-        <PlayerCharacter playerName={p.playerName} />
+        <PlayerCharacter key={p.characterName} playerName={p.playerName} />
       ))}
       {cities.map((c) => (
-        <CityMarker city={c} />
+        <CityMarker key={c.name} city={c} />
       ))}
       {a.map((routeString) => {
         const [from, to]: [CityName, CityName] = routeString.split("-") as [

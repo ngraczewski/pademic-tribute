@@ -46,9 +46,8 @@ export const cities = createReducer(citiesData, (builder) =>
     )
     .addCase(
       infectCity,
-      (state, { payload: { cityName, disease, infectionsCount } }) => {
-        console.log(cityName, disease, infectionsCount);
-        return state.map((c) =>
+      (state, { payload: { cityName, disease, infectionsCount } }) =>
+        state.map((c) =>
           c.name === cityName
             ? {
                 ...c,
@@ -58,7 +57,6 @@ export const cities = createReducer(citiesData, (builder) =>
                 },
               }
             : c
-        );
-      }
+        )
     )
 );
