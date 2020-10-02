@@ -78,29 +78,49 @@ export const setCityPosition = createAction<{
 
 export const endTurnAction = createAction("END_TURN_ACTION");
 
-export const startGame = (): AppThunk => (dispatch, getState) => {
-  const notUsedCharacters = notUsedCharactersSelector(getState());
-  const character = sample(notUsedCharacters);
-  const nonEpidemicPlayerCards = nonEpidemicPlayerCardsSelector(getState());
-  const playerName = "slaid3r";
+export const shuffleEpidemicsIn = createAction<{
+  epidemicsCount: number;
+}>("SHUFLE_EPIDEMICS_IN");
 
-  if (character) {
+export const startGameAction = ({
+  players,
+  epidemics,
+}: {
+  players: number;
+  epidemics: number;
+}): AppThunk => (dispatch, getState) => {
+  const notUsedCharacters = notUsedCharactersSelector(getState());
+  const characters = sampleSize(notUsedCharacters, players);
+  const nonEpidemicPlayerCards = nonEpidemicPlayerCardsSelector(getState());
+  const cardsPerPlayer = Math.ceil(8 / players);
+  const cardsToDraw = cardsPerPlayer * players;
+  const cards = sampleSize(nonEpidemicPlayerCards, cardsToDraw);
+
+  console.log(cardsToDraw);
+
+  for (let i = 0; i < players; i++) {
+    const playerName = `Player ${i + 1}`;
     dispatch(
       addPlayer({
         playerName,
-        characterName: character.characterName,
+        characterName: characters[i].characterName,
       })
     );
-
-    sampleSize(nonEpidemicPlayerCards, 4).forEach((card) =>
+    for (let j = 0; j < cardsPerPlayer; j++) {
       dispatch(
         drawCard({
           playerName,
-          card,
+          card: cards[i * cardsPerPlayer + j],
         })
-      )
-    );
+      );
+    }
   }
+
+  dispatch(
+    shuffleEpidemicsIn({
+      epidemicsCount: epidemics,
+    })
+  );
 };
 
 export const driveOrFerryAction = (city: City): AppThunk => (

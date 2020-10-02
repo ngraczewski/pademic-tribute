@@ -5,6 +5,7 @@ import {
   takeDirectFlight,
   takeCharterFlight,
   buildResearchStation,
+  endTurnAction,
 } from "../actions";
 import { Player } from "../../models/Player";
 
@@ -85,4 +86,22 @@ export const players = createReducer(intitialState, (builder) =>
         ),
       })
     )
+    .addCase(endTurnAction, (state) => {
+      const currentPlayerName = state.current;
+      const currentPlayer = state.list.find(
+        (p) => p.playerName === currentPlayerName
+      );
+
+      if (!currentPlayer) {
+        return state;
+      }
+
+      const currentPlayerIndex = state.list.indexOf(currentPlayer);
+      const nextPlayerIndex = (currentPlayerIndex + 1) % state.list.length;
+
+      return {
+        ...state,
+        current: state.list[nextPlayerIndex].playerName,
+      };
+    })
 );
