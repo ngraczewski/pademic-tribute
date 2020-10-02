@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { City } from "../models/City";
+import { City, CityName } from "../models/City";
 import { AppThunk } from "../app/store";
 import {
   notUsedCharactersSelector,
@@ -22,6 +22,7 @@ import {
   currentCityNameSelector,
   currentCitySelector,
 } from "./selectors/citiesSelectors";
+import { Position } from "../models/Position";
 
 export const USER_ACTION = "USER_ACTION";
 export const USER_MOVE_ACTION = `${USER_ACTION}_MOVE`;
@@ -69,6 +70,11 @@ export const treatDisease = createAction<{
   cityName: string;
   casCure: boolean;
 }>(`${USER_ACTION}_TREAT_DISEASE`);
+
+export const setCityPosition = createAction<{
+  cityName: CityName;
+  position: Position;
+}>("SET_CITY_POSITION");
 
 export const endTurnAction = createAction("END_TURN_ACTION");
 

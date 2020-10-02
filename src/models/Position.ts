@@ -1,4 +1,4 @@
 export type Position = {
-  top: string;
-  left: string;
+  top: number;
+  left: number;
 };

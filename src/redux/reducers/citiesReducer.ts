@@ -1,6 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { citiesData } from "../../data/cities";
-import { buildResearchStation, treatDisease } from "../actions";
+import {
+  buildResearchStation,
+  treatDisease,
+  setCityPosition,
+} from "../actions";
 
 export const cities = createReducer(citiesData, (builder) =>
   builder
@@ -28,5 +32,15 @@ export const cities = createReducer(citiesData, (builder) =>
               }
             : city
         )
+    )
+    .addCase(setCityPosition, (state, { payload: { cityName, position } }) =>
+      state.map((city) =>
+        city.name === cityName
+          ? {
+              ...city,
+              position,
+            }
+          : city
+      )
     )
 );

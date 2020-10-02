@@ -18,10 +18,10 @@ export const PandemicTribute = (): JSX.Element => {
     <>
       {!!currentCharacter && (
         <>
+          <Board />
           <ActionsCounter />
           <PlayerActions />
           <PlayerHand />
-          <Board />
         </>
       )}
     </>

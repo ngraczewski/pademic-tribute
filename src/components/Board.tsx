@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { useSelector } from "react-redux";
 import { PlayerCharacter } from "./PlayerCharacter";
 import { CityMarker } from "./CityMarker";
@@ -14,8 +14,15 @@ export const Board = (): JSX.Element => {
   const players = useSelector(playersSelector);
   const cities = useSelector(citiesSelector);
   const a = useSelector(routesSelector);
+
+  const style: CSSProperties = {
+    position: "relative",
+    width: "100%",
+    height: "80%",
+  };
+
   return (
-    <div>
+    <div style={style}>
       {players.map((p) => (
         <PlayerCharacter playerName={p.playerName} />
       ))}
