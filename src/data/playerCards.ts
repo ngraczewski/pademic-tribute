@@ -13,7 +13,7 @@ export const playerCardsData: PlayerCard[] = [
   ...citiesData.map(
     (c) =>
       ({
-        id: cardId++,
+        cardId: cardId++,
         cardName: c.name,
         type: CardType.CITY,
         color: c.color,
@@ -22,7 +22,7 @@ export const playerCardsData: PlayerCard[] = [
   ...range(0, 6).map(
     () =>
       ({
-        id: cardId++,
+        cardId: cardId++,
         cardName: "Epidemic",
         type: CardType.EPIDEMIC,
       } as EpidemicCard)

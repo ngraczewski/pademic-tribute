@@ -11,7 +11,7 @@ export const ActionsCounter = (): JSX.Element => {
 
   return (
     <div>
-      {actionsLeft} / {totalActions}
+      Actions left: {actionsLeft} / {totalActions}
     </div>
   );
 };

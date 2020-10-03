@@ -15,17 +15,20 @@ export enum EventCardType {
 }
 
 export type CityCard = {
+  cardId: number;
   cardName: string;
   type: CardType.CITY;
   color: CityColor;
 };
 
 export type EpidemicCard = {
+  cardId: number;
   cardName: "Epidemic";
   type: CardType.EPIDEMIC;
 };
 
 export type EventCard = {
+  cardId: number;
   cardName: string;
   type: CardType.EVENT;
   eventType: EventCardType;

@@ -7,7 +7,7 @@ import { CardType, EpidemicCard } from "../../models/PlayerCard";
 export const playerCards = createReducer(playerCardsData, (builder) =>
   builder
     .addCase(drawPlayerCard, (state, { payload: { card } }) =>
-      state.filter((c) => c.cardName !== card.cardName)
+      state.filter((c) => c.cardId !== card.cardId)
     )
     .addCase(shuffleEpidemicsIn, (state, { payload: { epidemicsCount } }) => {
       const shuffled = shuffle(state);
@@ -16,10 +16,12 @@ export const playerCards = createReducer(playerCardsData, (builder) =>
         Math.ceil(shuffled.length / epidemicsCount)
       );
 
+      let cardId = 100;
       return chunks.flatMap((c) =>
         shuffle([
           ...c,
           {
+            cardId: cardId++,
             cardName: "Epidemic",
             type: CardType.EPIDEMIC,
           } as EpidemicCard,

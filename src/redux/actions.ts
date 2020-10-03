@@ -95,6 +95,8 @@ export const setCityPosition = createAction<{
   position: Position;
 }>("SET_CITY_POSITION");
 
+export const discardCardAction = createAction<PlayerCard>('DISCARD_CARD');
+
 export const endTurn = createAction("END_TURN_ACTION");
 
 export const startGame = createAction("START_GAME");

@@ -8,6 +8,10 @@ import { gameOverReasonSelector, gameStageSelector } from "./redux/selectors/gam
 import { GameStage } from "./models/GameStage";
 import { GameOverReason } from "./models/GameOverReason";
 import { PlayersHands } from "./components/PlayersHands";
+import { InfectionRateIndicator } from "./components/InfectionRateIndicator";
+import { OutbreaksIndicator } from "./components/OutbreaksIndicator";
+import { Modal } from "./components/Modal";
+import { DiscardCardModal } from "./components/DiscardCardModal";
 
 export const PandemicTribute = (): JSX.Element => {
   const gameStage = useSelector(gameStageSelector);
@@ -19,9 +23,12 @@ export const PandemicTribute = (): JSX.Element => {
       {gameStage === GameStage.IN_PROGRESS && (
         <>
           <Board />
+          <InfectionRateIndicator/>
+          <OutbreaksIndicator/>
           <ActionsCounter />
           <PlayerActions />
           <PlayersHands />
+          <DiscardCardModal/>
         </>
       )}
       {gameStage === GameStage.LOST && <div>

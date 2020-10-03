@@ -5,7 +5,7 @@ import {
   takeDirectFlight,
   takeCharterFlight,
   buildResearchStation,
-  endTurn,
+  endTurn, discardCardAction
 } from "../actions";
 import { Player } from "../../models/Player";
 import { CardType } from "../../models/PlayerCard";
@@ -110,5 +110,12 @@ export const players = createReducer(intitialState, (builder) =>
         ...state,
         current: state.list[nextPlayerIndex].playerName,
       };
+    })
+    .addCase(discardCardAction, (state, {payload}) => {
+      const player = state.list.find(p => p.playerName === state.current);
+
+      if (player) {
+        player.cards = player.cards.filter(c => c.cardId !== payload.cardId)
+      }
     })
 );
