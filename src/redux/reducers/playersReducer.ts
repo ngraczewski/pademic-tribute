@@ -8,6 +8,7 @@ import {
   endTurn,
 } from "../actions";
 import { Player } from "../../models/Player";
+import { CardType } from "../../models/PlayerCard";
 
 type PlayersState = {
   list: Player[];
@@ -33,17 +34,23 @@ export const players = createReducer(intitialState, (builder) =>
         current: state.current ?? newPlayer?.playerName,
       };
     })
-    .addCase(drawPlayerCard, (state, { payload: { card, playerName } }) => ({
-      ...state,
-      list: state.list.map((p) =>
-        p.playerName === playerName
-          ? {
-              ...p,
-              cards: [...p.cards, card],
-            }
-          : p
-      ),
-    }))
+    .addCase(drawPlayerCard, (state, { payload: { card, playerName } }) => {
+      if (card.type === CardType.EPIDEMIC) {
+        return state;
+      }
+
+      return {
+        ...state,
+        list: state.list.map((p) =>
+          p.playerName === playerName
+            ? {
+                ...p,
+                cards: [...p.cards, card],
+              }
+            : p
+        ),
+      };
+    })
     .addCase(
       takeDirectFlight,
       (state, { payload: { playerName, targetCityName } }) => ({
