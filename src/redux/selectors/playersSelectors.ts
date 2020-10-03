@@ -43,3 +43,8 @@ export const currentPlayerCardsSelector = createSelector(
   currentPlayerSelector,
   (player) => player?.cards
 );
+
+export const isActivePlayerSelector = (playerName: string) => createSelector(
+  currentPlayerNameSelector,
+  (currentPlayerName) => currentPlayerName === playerName
+)

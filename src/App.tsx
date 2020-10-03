@@ -2,14 +2,17 @@ import React from "react";
 import { Board } from "./components/Board";
 import { ActionsCounter } from "./components/ActionsCounter";
 import { useSelector } from "react-redux";
-import { PlayerHand } from "./components/PlayerHand";
 import { PlayerActions } from "./components/PlayerActions";
 import { GameConfig } from "./components/GameConfig";
-import { gameStageSelector } from "./redux/selectors/gameStageSelectors";
+import { gameOverReasonSelector, gameStageSelector } from "./redux/selectors/gameStageSelectors";
 import { GameStage } from "./models/GameStage";
+import { GameOverReason } from "./models/GameOverReason";
+import { PlayersHands } from "./components/PlayersHands";
 
 export const PandemicTribute = (): JSX.Element => {
   const gameStage = useSelector(gameStageSelector);
+  const gameOverReason = useSelector(gameOverReasonSelector);
+  
   return (
     <>
       {gameStage === GameStage.CONFIG && <GameConfig />}
@@ -18,10 +21,15 @@ export const PandemicTribute = (): JSX.Element => {
           <Board />
           <ActionsCounter />
           <PlayerActions />
-          <PlayerHand />
+          <PlayersHands />
         </>
       )}
-      {gameStage === GameStage.LOST && <div>Game Over</div>}
+      {gameStage === GameStage.LOST && <div>
+        <div>Game Over</div>
+        {gameOverReason === GameOverReason.DISEASE_SPREAD_TOO_MUCH && <div>Disease spread too much</div>}
+        {gameOverReason === GameOverReason.GLOBAL_PANIC && <div>Global panic</div>}
+        {gameOverReason === GameOverReason.OUT_OF_TIME && <div>Out of time</div>}
+        </div>}
     </>
   );
 };

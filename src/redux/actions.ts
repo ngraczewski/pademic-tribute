@@ -25,12 +25,12 @@ import {
   currentCityNameSelector,
   currentCitySelector,
   diseaseSpreadTooMuchSelector,
-  infectionsCountSelector,
   outbreaksCountSelector,
 } from "./selectors/citiesSelectors";
 import { Position } from "../models/Position";
 import { InfectionCard } from "../models/InfectionCard";
 import { infectionCardsSelector } from "./selectors/infectionCardsSelectors";
+import { GameOverReason } from "../models/GameOverReason";
 
 export const USER_ACTION = "USER_ACTION";
 export const USER_MOVE_ACTION = `${USER_ACTION}_MOVE`;
@@ -98,13 +98,13 @@ export const endTurn = createAction("END_TURN_ACTION");
 
 export const startGame = createAction("START_GAME");
 
-export const gameOver = createAction("GAME_OVER");
+export const gameOver = createAction<GameOverReason>("GAME_OVER");
 
 export const intensify = createAction("INTENSIFY");
 
 export const shuffleEpidemicsIn = createAction<{
   epidemicsCount: number;
-}>("SHUFLE_EPIDEMICS_IN");
+}>("SHUFFLE_EPIDEMICS_IN");
 
 export const startGameAction = ({
   players,
@@ -246,7 +246,7 @@ export const applyDrawPlayerCardsPhase = (playerName: string): AppThunk => (
   const playerCards = playerCardsSelector(getState());
 
   if (playerCards.length < 2) {
-    dispatch(gameOver());
+    dispatch(gameOver(GameOverReason.OUT_OF_TIME));
     return;
   }
 
@@ -406,7 +406,11 @@ export const infectCityAction = (payload: {
   const outbreaksCount = outbreaksCountSelector(getState())
   const diseaseSpreadTooMuch = diseaseSpreadTooMuchSelector(getState());
 
-  if (outbreaksCount >= 8 || diseaseSpreadTooMuch) {
-    dispatch(gameOver());
+  if (outbreaksCount >= 8) {
+    dispatch(gameOver(GameOverReason.GLOBAL_PANIC));
+  } 
+
+  if (diseaseSpreadTooMuch) {
+    dispatch(gameOver(GameOverReason.DISEASE_SPREAD_TOO_MUCH));
   }
 }
