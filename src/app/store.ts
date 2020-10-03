@@ -7,6 +7,7 @@ import { playerCards } from "../redux/reducers/playerCardsReducer";
 import { cures } from "../redux/reducers/curesReducer";
 import { gameStage } from "../redux/reducers/gameStageReducer";
 import { infectionCards } from "../redux/reducers/infectionCardsReducer";
+import { infectionRate } from "../redux/reducers/infectionRateReducer";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     cures,
     gameStage,
     infectionCards,
+    infectionRate,
   },
 });
 

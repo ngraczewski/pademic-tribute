@@ -31,6 +31,7 @@ import { Position } from "../models/Position";
 import { InfectionCard } from "../models/InfectionCard";
 import { infectionCardsSelector } from "./selectors/infectionCardsSelectors";
 import { GameOverReason } from "../models/GameOverReason";
+import { infectionsPerInfectionPhaseSelector } from "./selectors/infectionRateSelectors";
 
 export const USER_ACTION = "USER_ACTION";
 export const USER_MOVE_ACTION = `${USER_ACTION}_MOVE`;
@@ -198,8 +199,9 @@ export const startGameAction = ({
 };
 
 export const applyInfectionPhase = (): AppThunk => (dispatch, getState) => {
+  const infectionsPerInfectionPhase = infectionsPerInfectionPhaseSelector(getState());
   const infectionCards = infectionCardsSelector(getState());
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < infectionsPerInfectionPhase; i++) {
     const infectionCard = infectionCards[i];
     dispatch(
       drawInfectionCard({
