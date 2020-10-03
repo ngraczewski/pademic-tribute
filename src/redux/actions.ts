@@ -24,6 +24,8 @@ import { Disease } from "../models/Disease";
 import {
   currentCityNameSelector,
   currentCitySelector,
+  diseaseSpreadTooMuchSelector,
+  infectionsCountSelector,
   outbreaksCountSelector,
 } from "./selectors/citiesSelectors";
 import { Position } from "../models/Position";
@@ -402,10 +404,9 @@ export const infectCityAction = (payload: {
   dispatch(infectCity(payload));
 
   const outbreaksCount = outbreaksCountSelector(getState())
+  const diseaseSpreadTooMuch = diseaseSpreadTooMuchSelector(getState());
 
-  console.log(outbreaksCount);
-
-  if (outbreaksCount >= 8) {
+  if (outbreaksCount >= 8 || diseaseSpreadTooMuch) {
     dispatch(gameOver());
   }
 }
