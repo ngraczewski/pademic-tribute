@@ -2,7 +2,7 @@ import { InfectionCard } from "../../models/InfectionCard";
 import { infectionCardsData } from "../../data/infectionCards";
 import { createReducer } from "@reduxjs/toolkit";
 import { shuffle } from "lodash";
-import { drawInfectionCard } from "../actions";
+import { drawInfectionCard, intensify } from "../actions";
 
 export type InfectionCardsState = {
   deck: InfectionCard[];
@@ -15,9 +15,15 @@ export const initialState: InfectionCardsState = {
 };
 
 export const infectionCards = createReducer(initialState, (builder) =>
-  builder.addCase(drawInfectionCard, (state, { payload: { card } }) => ({
-    ...state,
-    deck: state.deck.filter((c) => c.cardName !== card.cardName),
-    discarded: [...state.discarded, card],
-  }))
+  builder
+    .addCase(drawInfectionCard, (state, { payload: { card } }) => ({
+      ...state,
+      deck: state.deck.filter((c) => c.cardName !== card.cardName),
+      discarded: [...state.discarded, card],
+    }))
+    .addCase(intensify, (state) => ({
+      ...state,
+      deck: [...shuffle(state.discarded), ...state.deck],
+      discarded: [],
+    }))
 );

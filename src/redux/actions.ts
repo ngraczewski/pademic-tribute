@@ -5,12 +5,12 @@ import {
   notUsedCharactersSelector,
   currentCharacterSelector,
 } from "./selectors/charactersSelectors";
-import { sampleSize } from "lodash";
+import { last, sampleSize } from "lodash";
 import {
   nonEpidemicPlayerCardsSelector,
   playerCardsSelector,
 } from "./selectors/playerCardsSelectors";
-import { PlayerCard } from "../models/PlayerCard";
+import { CardType, PlayerCard } from "../models/PlayerCard";
 import {
   canDriveFerryToCitySelector,
   canFlightDirectlyToCitySelector,
@@ -96,6 +96,8 @@ export const endTurn = createAction("END_TURN_ACTION");
 export const startGame = createAction("START_GAME");
 
 export const gameOver = createAction("GAME_OVER");
+
+export const intensify = createAction("INTENSIFY");
 
 export const shuffleEpidemicsIn = createAction<{
   epidemicsCount: number;
@@ -192,46 +194,79 @@ export const startGameAction = ({
   dispatch(startGame());
 };
 
-export const endTurnAction = (): AppThunk => (dispatch, getState) => {
-  const playerCards = playerCardsSelector(getState());
+export const applyInfectionPhase = (): AppThunk => (dispatch, getState) => {
   const infectionCards = infectionCardsSelector(getState());
-  const currentPlayerName = currentPlayerNameSelector(getState());
+  for (let i = 0; i < 2; i++) {
+    const infectionCard = infectionCards[i];
+    dispatch(
+      drawInfectionCard({
+        card: infectionCard,
+      })
+    );
+    dispatch(
+      infectCity({
+        cityName: infectionCard.cardName,
+        disease: infectionCard.disease,
+        infectionsCount: 1,
+      })
+    );
+  }
+};
+
+export const applyEpidemicCard = (): AppThunk => (dispatch, getState) => {
+  const infectionCards = infectionCardsSelector(getState());
+  const card = last(infectionCards);
+
+  if (!card) {
+    return;
+  }
+
+  dispatch(
+    drawInfectionCard({
+      card,
+    })
+  );
+  dispatch(
+    infectCity({
+      cityName: card.cardName,
+      disease: card.disease,
+      infectionsCount: 3,
+    })
+  );
+  dispatch(intensify());
+};
+
+export const applyDrawPlayerCardsPhase = (playerName: string): AppThunk => (
+  dispatch,
+  getState
+) => {
+  const playerCards = playerCardsSelector(getState());
 
   if (playerCards.length < 2) {
     dispatch(gameOver());
     return;
   }
 
-  if (currentPlayerName) {
+  for (let i = 0; i < 2; i++) {
+    const card = playerCards[i];
     dispatch(
       drawPlayerCard({
-        playerName: currentPlayerName,
-        card: playerCards[0],
+        playerName,
+        card,
       })
     );
-    dispatch(
-      drawPlayerCard({
-        playerName: currentPlayerName,
-        card: playerCards[1],
-      })
-    );
-
-    for (let i = 0; i < 2; i++) {
-      const infectionCard = infectionCards[i];
-      dispatch(
-        drawInfectionCard({
-          card: infectionCard,
-        })
-      );
-      dispatch(
-        infectCity({
-          cityName: infectionCard.cardName,
-          disease: infectionCard.disease,
-          infectionsCount: 1,
-        })
-      );
+    if (card.type === CardType.EPIDEMIC) {
+      dispatch(applyEpidemicCard());
     }
+  }
+};
 
+export const endTurnAction = (): AppThunk => (dispatch, getState) => {
+  const currentPlayerName = currentPlayerNameSelector(getState());
+
+  if (currentPlayerName) {
+    dispatch(applyDrawPlayerCardsPhase(currentPlayerName));
+    dispatch(applyInfectionPhase());
     dispatch(endTurn());
   }
 };
