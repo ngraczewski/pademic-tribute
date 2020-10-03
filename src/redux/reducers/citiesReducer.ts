@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { max } from "lodash";
 import { citiesData } from "../../data/cities";
 import {
   buildResearchStation,
@@ -47,16 +48,30 @@ export const cities = createReducer(citiesData, (builder) =>
     .addCase(
       infectCity,
       (state, { payload: { cityName, disease, infectionsCount } }) =>
-        state.map((c) =>
-          c.name === cityName
-            ? {
-                ...c,
-                diseases: {
-                  ...c.diseases,
-                  [disease]: c.diseases[disease] + infectionsCount,
-                },
-              }
-            : c
-        )
+        {
+          const outbreaks: string[] = [];
+
+          const applyInfection = (cityName: string) => {
+            const city = state.find(c => c.name === cityName);
+            
+            if (!city || outbreaks.includes(cityName)) {
+              return;
+            }
+            
+            const currentInfectionCount = city.diseases[disease];
+            if (currentInfectionCount + infectionsCount > 3) {
+              outbreaks.push(cityName);
+              city.neighbours.forEach(applyInfection);
+            }
+
+            city.diseases[disease] = Math.min(3, currentInfectionCount + infectionsCount);
+          }
+
+          applyInfection(cityName);
+          if (outbreaks.length) {
+
+            console.log(outbreaks)
+          }
+        }
     )
 );
