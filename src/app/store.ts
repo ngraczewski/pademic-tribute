@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { players } from "../redux/reducers/playersReducer";
-import { cities } from "../redux/reducers/citiesReducer";
+import { citiesData } from "../redux/reducers/citiesReducer";
 import { actions } from "../redux/reducers/actionsReducer";
 import { characters } from "../redux/reducers/charactersReducer";
 import { playerCards } from "../redux/reducers/playerCardsReducer";
@@ -11,7 +11,7 @@ import { infectionCards } from "../redux/reducers/infectionCardsReducer";
 export const store = configureStore({
   reducer: {
     players,
-    cities,
+    citiesData,
     actions,
     characters,
     playerCards,

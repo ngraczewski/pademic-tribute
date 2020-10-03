@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { max } from "lodash";
-import { citiesData } from "../../data/cities";
+import { citiesData as cities } from "../../data/cities";
+import { City, CityName } from "../../models/City";
 import {
   buildResearchStation,
   treatDisease,
@@ -8,10 +8,21 @@ import {
   infectCity,
 } from "../actions";
 
-export const cities = createReducer(citiesData, (builder) =>
+export type CitiesDataState = {
+  cities: City[],
+  outbreaks: CityName[],
+}
+
+export const initialState: CitiesDataState = {
+  cities,
+  outbreaks: [],
+} 
+
+export const citiesData = createReducer(initialState, (builder) =>
   builder
-    .addCase(buildResearchStation, (state, { payload: { cityName } }) =>
-      state.map((city) =>
+    .addCase(buildResearchStation, (state, { payload: { cityName } }) => ({
+      ...state,
+      cities: state.cities.map((city) =>
         city.name === cityName
           ? {
               ...city,
@@ -19,11 +30,14 @@ export const cities = createReducer(citiesData, (builder) =>
             }
           : city
       )
+    })
     )
     .addCase(
       treatDisease,
       (state, { payload: { cityName, casCure, disease } }) =>
-        state.map((city) =>
+        ({
+          ...state,
+          cities: state.cities.map((city) =>
           city.name === cityName
             ? {
                 ...city,
@@ -34,9 +48,12 @@ export const cities = createReducer(citiesData, (builder) =>
               }
             : city
         )
+        })
     )
     .addCase(setCityPosition, (state, { payload: { cityName, position } }) =>
-      state.map((city) =>
+      ({
+        ...state,
+        cities: state.cities.map((city) =>
         city.name === cityName
           ? {
               ...city,
@@ -44,15 +61,16 @@ export const cities = createReducer(citiesData, (builder) =>
             }
           : city
       )
+      })
     )
     .addCase(
       infectCity,
       (state, { payload: { cityName, disease, infectionsCount } }) =>
         {
-          const outbreaks: string[] = [];
+          const outbreaks: CityName[] = [];
 
-          const applyInfection = (cityName: string) => {
-            const city = state.find(c => c.name === cityName);
+          const applyInfection = (cityName: CityName) => {
+            const city = state.cities.find(c => c.name === cityName);
             
             if (!city || outbreaks.includes(cityName)) {
               return;
@@ -68,10 +86,14 @@ export const cities = createReducer(citiesData, (builder) =>
           }
 
           applyInfection(cityName);
-          if (outbreaks.length) {
 
+          if (outbreaks.length) {
             console.log(outbreaks)
           }
+          state.outbreaks = [
+            ...state.outbreaks,
+            ...outbreaks,
+          ]
         }
     )
 );

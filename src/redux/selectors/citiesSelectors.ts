@@ -4,7 +4,9 @@ import { City } from "../../models/City";
 import { currentCharacterSelector } from "./charactersSelectors";
 import { uniq } from "lodash";
 
-export const citiesSelector = (state: RootState) => state.cities;
+export const citiesDataSelector = (state: RootState) => state.citiesData;
+
+export const citiesSelector = (state: RootState) => citiesDataSelector(state).cities;
 
 export const citiesMapSelector = createSelector(citiesSelector, (cities) =>
   cities.reduce(
@@ -47,3 +49,7 @@ export const routesSelector = createSelector(citiesSelector, (cities) =>
       .sort()
   )
 );
+
+export const outbreaksSelector = (state: RootState) => citiesDataSelector(state).outbreaks;
+
+export const outbreaksCountSelector = (state: RootState) => outbreaksSelector(state).length;

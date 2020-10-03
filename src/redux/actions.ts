@@ -24,6 +24,7 @@ import { Disease } from "../models/Disease";
 import {
   currentCityNameSelector,
   currentCitySelector,
+  outbreaksCountSelector,
 } from "./selectors/citiesSelectors";
 import { Position } from "../models/Position";
 import { InfectionCard } from "../models/InfectionCard";
@@ -151,7 +152,7 @@ export const startGameAction = ({
       })
     );
     dispatch(
-      infectCity({
+      infectCityAction({
         cityName: infectionCard.cardName,
         disease: infectionCard.disease,
         infectionsCount: 3,
@@ -167,7 +168,7 @@ export const startGameAction = ({
       })
     );
     dispatch(
-      infectCity({
+      infectCityAction({
         cityName: infectionCard.cardName,
         disease: infectionCard.disease,
         infectionsCount: 2,
@@ -183,7 +184,7 @@ export const startGameAction = ({
       })
     );
     dispatch(
-      infectCity({
+      infectCityAction({
         cityName: infectionCard.cardName,
         disease: infectionCard.disease,
         infectionsCount: 1,
@@ -204,7 +205,7 @@ export const applyInfectionPhase = (): AppThunk => (dispatch, getState) => {
       })
     );
     dispatch(
-      infectCity({
+      infectCityAction({
         cityName: infectionCard.cardName,
         disease: infectionCard.disease,
         infectionsCount: 1,
@@ -227,7 +228,7 @@ export const applyEpidemicCard = (): AppThunk => (dispatch, getState) => {
     })
   );
   dispatch(
-    infectCity({
+    infectCityAction({
       cityName: card.cardName,
       disease: card.disease,
       infectionsCount: 3,
@@ -392,3 +393,19 @@ export const treatDiseaseAction = (disease: Disease): AppThunk => (
     );
   }
 };
+
+export const infectCityAction = (payload: {
+  cityName: CityName;
+  infectionsCount: number;
+  disease: Disease;
+}): AppThunk => (dispatch, getState) => {
+  dispatch(infectCity(payload));
+
+  const outbreaksCount = outbreaksCountSelector(getState())
+
+  console.log(outbreaksCount);
+
+  if (outbreaksCount >= 8) {
+    dispatch(gameOver());
+  }
+}
