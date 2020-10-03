@@ -18,6 +18,8 @@ import {
 import { Position } from "../models/Position";
 import { Disease } from "../models/Disease";
 
+import './CityMarker.css';
+
 type Props = {
   city: City;
 };
@@ -70,6 +72,7 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
     alignItems: "center",
     height: "25px",
     width: "25px",
+    animation: 'pulse 5s' 
   });
 
   const cityIndicatorStyle: CSSProperties = {

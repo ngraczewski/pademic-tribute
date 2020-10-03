@@ -6,7 +6,8 @@ import { uniq } from "lodash";
 
 export const citiesDataSelector = (state: RootState) => state.citiesData;
 
-export const citiesSelector = (state: RootState) => citiesDataSelector(state).cities;
+export const citiesSelector = (state: RootState) =>
+  citiesDataSelector(state).cities;
 
 export const citiesMapSelector = createSelector(citiesSelector, (cities) =>
   cities.reduce(
@@ -50,25 +51,38 @@ export const routesSelector = createSelector(citiesSelector, (cities) =>
   )
 );
 
-export const outbreaksSelector = (state: RootState) => citiesDataSelector(state).outbreaks;
+export const outbreaksSelector = (state: RootState) =>
+  citiesDataSelector(state).outbreaks;
 
-export const outbreaksCountSelector = (state: RootState) => outbreaksSelector(state).length;
+export const outbreaksCountSelector = (state: RootState) =>
+  outbreaksSelector(state).length;
 
-export const infectionsCountSelector = (state: RootState) => citiesSelector(state).reduce((totalCounts, city) => {
-  return {
-    red: totalCounts.red + city.diseases.red,
-    blue: totalCounts.blue + city.diseases.blue,
-    black: totalCounts.black + city.diseases.black,
-    yellow: totalCounts.yellow + city.diseases.yellow,
-  }
-}, {
-  red: 0,
-  blue: 0,
-  black: 0,
-  yellow: 0
-})
+export const infectionsCountSelector = (
+  state: RootState
+): {
+  red: number;
+  black: number;
+  blue: number;
+  yellow: number;
+} =>
+  citiesSelector(state).reduce(
+    (totalCounts, city) => {
+      return {
+        red: totalCounts.red + city.diseases.red,
+        blue: totalCounts.blue + city.diseases.blue,
+        black: totalCounts.black + city.diseases.black,
+        yellow: totalCounts.yellow + city.diseases.yellow,
+      };
+    },
+    {
+      red: 0,
+      blue: 0,
+      black: 0,
+      yellow: 0,
+    }
+  );
 
 export const diseaseSpreadTooMuchSelector = createSelector(
   infectionsCountSelector,
-  ({red, blue, black, yellow}) => Math.max(red, blue, black, yellow) > 24
-)
+  ({ red, blue, black, yellow }) => Math.max(red, blue, black, yellow) > 24
+);

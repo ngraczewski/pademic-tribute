@@ -18,7 +18,7 @@ export const Board = (): JSX.Element => {
   const style: CSSProperties = {
     position: "relative",
     width: "100%",
-    height: "80%",
+    height: "60%",
   };
 
   return (

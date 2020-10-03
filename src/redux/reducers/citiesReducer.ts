@@ -9,14 +9,14 @@ import {
 } from "../actions";
 
 export type CitiesDataState = {
-  cities: City[],
-  outbreaks: CityName[],
-}
+  cities: City[];
+  outbreaks: CityName[];
+};
 
 export const initialState: CitiesDataState = {
   cities,
   outbreaks: [],
-} 
+};
 
 export const citiesData = createReducer(initialState, (builder) =>
   builder
@@ -29,15 +29,13 @@ export const citiesData = createReducer(initialState, (builder) =>
               hasResearchStation: true,
             }
           : city
-      )
-    })
-    )
+      ),
+    }))
     .addCase(
       treatDisease,
-      (state, { payload: { cityName, casCure, disease } }) =>
-        ({
-          ...state,
-          cities: state.cities.map((city) =>
+      (state, { payload: { cityName, casCure, disease } }) => ({
+        ...state,
+        cities: state.cities.map((city) =>
           city.name === cityName
             ? {
                 ...city,
@@ -47,53 +45,56 @@ export const citiesData = createReducer(initialState, (builder) =>
                 },
               }
             : city
-        )
-        })
+        ),
+      })
     )
-    .addCase(setCityPosition, (state, { payload: { cityName, position } }) =>
-      ({
-        ...state,
-        cities: state.cities.map((city) =>
+    .addCase(setCityPosition, (state, { payload: { cityName, position } }) => ({
+      ...state,
+      cities: state.cities.map((city) =>
         city.name === cityName
           ? {
               ...city,
               position,
             }
           : city
-      )
-      })
-    )
+      ),
+    }))
     .addCase(
       infectCity,
-      (state, { payload: { cityName, disease, infectionsCount } }) =>
-        {
-          const outbreaks: CityName[] = [];
+      (state, { payload: { cityName, disease, infectionsCount } }) => {
+        const outbreaks: CityName[] = [];
 
-          const applyInfection = (cityName: CityName) => {
-            const city = state.cities.find(c => c.name === cityName);
-            
-            if (!city || outbreaks.includes(cityName)) {
-              return;
-            }
-            
-            const currentInfectionCount = city.diseases[disease];
-            if (currentInfectionCount + infectionsCount > 3) {
-              outbreaks.push(cityName);
-              city.neighbours.forEach(applyInfection);
-            }
+        const applyInfection = (
+          cityName: CityName,
+          infectionsCount: number
+        ) => {
+          const city = state.cities.find((c) => c.name === cityName);
 
-            city.diseases[disease] = Math.min(3, currentInfectionCount + infectionsCount);
+          if (!city) {
+            return;
           }
 
-          applyInfection(cityName);
-
-          if (outbreaks.length) {
-            console.log(outbreaks)
+          const currentInfectionCount = city.diseases[disease];
+          if (
+            currentInfectionCount + infectionsCount > 3 &&
+            !outbreaks.includes(cityName)
+          ) {
+            outbreaks.push(cityName);
+            city.neighbours.forEach((n) => applyInfection(n, 1));
           }
-          state.outbreaks = [
-            ...state.outbreaks,
-            ...outbreaks,
-          ]
+
+          city.diseases[disease] = Math.min(
+            3,
+            currentInfectionCount + infectionsCount
+          );
+        };
+
+        applyInfection(cityName, infectionsCount);
+
+        if (outbreaks.length) {
+          console.log(outbreaks);
         }
+        state.outbreaks = [...state.outbreaks, ...outbreaks];
+      }
     )
 );

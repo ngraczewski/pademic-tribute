@@ -4,7 +4,10 @@ import { ActionsCounter } from "./components/ActionsCounter";
 import { useSelector } from "react-redux";
 import { PlayerActions } from "./components/PlayerActions";
 import { GameConfig } from "./components/GameConfig";
-import { gameOverReasonSelector, gameStageSelector } from "./redux/selectors/gameStageSelectors";
+import {
+  gameOverReasonSelector,
+  gameStageSelector,
+} from "./redux/selectors/gameStageSelectors";
 import { GameStage } from "./models/GameStage";
 import { GameOverReason } from "./models/GameOverReason";
 import { PlayersHands } from "./components/PlayersHands";
@@ -12,31 +15,49 @@ import { InfectionRateIndicator } from "./components/InfectionRateIndicator";
 import { OutbreaksIndicator } from "./components/OutbreaksIndicator";
 import { Modal } from "./components/Modal";
 import { DiscardCardModal } from "./components/DiscardCardModal";
+import { InfectionsIndicator } from "./components/InfectionsIndicator";
+import { EventsList } from "./components/EventsList";
 
 export const PandemicTribute = (): JSX.Element => {
   const gameStage = useSelector(gameStageSelector);
   const gameOverReason = useSelector(gameOverReasonSelector);
-  
+
   return (
     <>
       {gameStage === GameStage.CONFIG && <GameConfig />}
       {gameStage === GameStage.IN_PROGRESS && (
         <>
           <Board />
-          <InfectionRateIndicator/>
-          <OutbreaksIndicator/>
+          <InfectionRateIndicator />
+          <InfectionsIndicator />
+          <OutbreaksIndicator />
           <ActionsCounter />
           <PlayerActions />
           <PlayersHands />
-          <DiscardCardModal/>
+          <DiscardCardModal />
+          <EventsList />
         </>
       )}
-      {gameStage === GameStage.LOST && <div>
-        <div>Game Over</div>
-        {gameOverReason === GameOverReason.DISEASE_SPREAD_TOO_MUCH && <div>Disease spread too much</div>}
-        {gameOverReason === GameOverReason.GLOBAL_PANIC && <div>Global panic</div>}
-        {gameOverReason === GameOverReason.OUT_OF_TIME && <div>Out of time</div>}
-        </div>}
+      {gameStage === GameStage.LOST && (
+        <div>
+          <div>Game Over</div>
+          {gameOverReason === GameOverReason.DISEASE_SPREAD_TOO_MUCH && (
+            <>
+              <div>Disease spread too much</div>
+              <InfectionsIndicator />
+            </>
+          )}
+          {gameOverReason === GameOverReason.GLOBAL_PANIC && (
+            <>
+              <div>Global panic</div>
+              <OutbreaksIndicator />
+            </>
+          )}
+          {gameOverReason === GameOverReason.OUT_OF_TIME && (
+            <div>Out of time</div>
+          )}
+        </div>
+      )}
     </>
   );
 };
