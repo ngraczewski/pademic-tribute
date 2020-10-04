@@ -8,7 +8,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 93),
       top: Math.floor(0.8 * 175),
     },
-    neighbours: ["Chicago", "Tokio", "Manila", "Los Angeles"],
+    neighbors: ["Chicago", "Tokio", "Manila", "Los Angeles"],
     hasResearchStation: true,
     diseases: {
       red: 0,
@@ -24,7 +24,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 252),
       top: Math.floor(0.8 * 120),
     },
-    neighbours: [
+    neighbors: [
       "San Francisco",
       "Atlanta",
       "Montreal",
@@ -46,7 +46,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 375),
       top: Math.floor(0.8 * 121),
     },
-    neighbours: ["Chicago", "Waszyngton", "Nowy Jork"],
+    neighbors: ["Chicago", "Waszyngton", "Nowy Jork"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -62,7 +62,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 494),
       top: Math.floor(0.8 * 145),
     },
-    neighbours: ["Montreal", "Waszyngton", "Londyn", "Madryt"],
+    neighbors: ["Montreal", "Waszyngton", "Londyn", "Madryt"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -78,7 +78,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 301),
       top: Math.floor(0.8 * 197),
     },
-    neighbours: ["Chicago", "Waszyngton", "Miami"],
+    neighbors: ["Chicago", "Waszyngton", "Miami"],
     hasResearchStation: true,
     diseases: {
       red: 0,
@@ -94,7 +94,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 423),
       top: Math.floor(0.8 * 200),
     },
-    neighbours: ["Atlanta", "Montreal", "Nowy Jork", "Miami"],
+    neighbors: ["Atlanta", "Montreal", "Nowy Jork", "Miami"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -110,7 +110,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 671),
       top: Math.floor(0.8 * 93),
     },
-    neighbours: ["Nowy Jork", "Madryt", "Paryz", "Essen"],
+    neighbors: ["Nowy Jork", "Madryt", "Paryz", "Essen"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -126,7 +126,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 778),
       top: Math.floor(0.8 * 87),
     },
-    neighbours: ["Londyn", "Paryz", "Mediolan", "Petersburg"],
+    neighbors: ["Londyn", "Paryz", "Mediolan", "Petersburg"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -142,7 +142,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 864),
       top: Math.floor(0.8 * 93),
     },
-    neighbours: ["Essen", "Stambul", "Moskwa"],
+    neighbors: ["Essen", "Stambul", "Moskwa"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -158,7 +158,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 625),
       top: Math.floor(0.8 * 204),
     },
-    neighbours: ["Nowy Jork", "Sao Paulo", "Londyn", "Paryz", "Algier"],
+    neighbors: ["Nowy Jork", "Sao Paulo", "Londyn", "Paryz", "Algier"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -174,7 +174,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 756),
       top: Math.floor(0.8 * 163),
     },
-    neighbours: ["Londyn", "Essen", "Mediolan", "Algier", "Madryt"],
+    neighbors: ["Londyn", "Essen", "Mediolan", "Algier", "Madryt"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -190,7 +190,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 834),
       top: Math.floor(0.8 * 139),
     },
-    neighbours: ["Essen", "Stambul", "Paryz"],
+    neighbors: ["Essen", "Stambul", "Paryz"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -206,7 +206,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 48),
       top: Math.floor(0.8 * 290),
     },
-    neighbours: ["San Francisco", "Sydney", "Chicago", "Meksyk"],
+    neighbors: ["San Francisco", "Sydney", "Chicago", "Meksyk"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -222,7 +222,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 193),
       top: Math.floor(0.8 * 295),
     },
-    neighbours: ["San Francisco", "Chicago", "Miami", "Bogota", "Lima"],
+    neighbors: ["San Francisco", "Chicago", "Miami", "Bogota", "Lima"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -238,7 +238,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 299),
       top: Math.floor(0.8 * 262),
     },
-    neighbours: ["Meksyk", "Atlanta", "Waszyngton", "Bogota"],
+    neighbors: ["Meksyk", "Atlanta", "Waszyngton", "Bogota"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -254,7 +254,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 196),
       top: Math.floor(0.8 * 388),
     },
-    neighbours: ["Meksyk", "Miami", "Lima", "Buenos Aires", "Sao Paulo"],
+    neighbors: ["Meksyk", "Miami", "Lima", "Buenos Aires", "Sao Paulo"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -270,7 +270,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 112),
       top: Math.floor(0.8 * 438),
     },
-    neighbours: ["Meksyk", "Bogota", "Santiago"],
+    neighbors: ["Meksyk", "Bogota", "Santiago"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -286,7 +286,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 141),
       top: Math.floor(0.8 * 548),
     },
-    neighbours: ["Lima"],
+    neighbors: ["Lima"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -302,7 +302,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 252),
       top: Math.floor(0.8 * 537),
     },
-    neighbours: ["Bogota", "Sao Paulo"],
+    neighbors: ["Bogota", "Sao Paulo"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -318,7 +318,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 285),
       top: Math.floor(0.8 * 441),
     },
-    neighbours: ["Bogota", "Buenos Aires", "Madryt", "Lagos"],
+    neighbors: ["Bogota", "Buenos Aires", "Madryt", "Lagos"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -334,7 +334,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 685),
       top: Math.floor(0.8 * 436),
     },
-    neighbours: ["Sao Paulo", "Chartum", "Kinszasa"],
+    neighbors: ["Sao Paulo", "Chartum", "Kinszasa"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -350,7 +350,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 782),
       top: Math.floor(0.8 * 485),
     },
-    neighbours: ["Lagos", "Kinszasa", "Johannesburg", "Kair"],
+    neighbors: ["Lagos", "Kinszasa", "Johannesburg", "Kair"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -366,7 +366,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 644),
       top: Math.floor(0.8 * 496),
     },
-    neighbours: ["Lagos", "Chartum", "Johannesburg"],
+    neighbors: ["Lagos", "Chartum", "Johannesburg"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -382,7 +382,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 721),
       top: Math.floor(0.8 * 613),
     },
-    neighbours: ["Kinszasa", "Chartum"],
+    neighbors: ["Kinszasa", "Chartum"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -398,7 +398,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 981),
       top: Math.floor(0.8 * 152),
     },
-    neighbours: ["Petersburg", "Stambul", "Teheran"],
+    neighbors: ["Petersburg", "Stambul", "Teheran"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -414,7 +414,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1074),
       top: Math.floor(0.8 * 222),
     },
-    neighbours: ["Moskwa", "Delhi", "Bagdad"],
+    neighbors: ["Moskwa", "Delhi", "Bagdad"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -430,7 +430,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 882),
       top: Math.floor(0.8 * 232),
     },
-    neighbours: ["Mediolan", "Moskwa", "Algier", "Bagdad", "Kair"],
+    neighbors: ["Mediolan", "Moskwa", "Algier", "Bagdad", "Kair"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -446,7 +446,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 772),
       top: Math.floor(0.8 * 251),
     },
-    neighbours: ["Madryt", "Paryz", "Stambul", "Kair"],
+    neighbors: ["Madryt", "Paryz", "Stambul", "Kair"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -462,7 +462,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 824),
       top: Math.floor(0.8 * 383),
     },
-    neighbours: ["Algier", "Stambul", "Bagdad", "Rijad", "Chartum"],
+    neighbors: ["Algier", "Stambul", "Bagdad", "Rijad", "Chartum"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -478,7 +478,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 975),
       top: Math.floor(0.8 * 296),
     },
-    neighbours: ["Stambul", "Teheran", "Karaczi", "Rijad", "Kair"],
+    neighbors: ["Stambul", "Teheran", "Karaczi", "Rijad", "Kair"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -494,7 +494,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 992),
       top: Math.floor(0.8 * 382),
     },
-    neighbours: ["Kair", "Bagdad", "Karaczi"],
+    neighbors: ["Kair", "Bagdad", "Karaczi"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -510,7 +510,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1118),
       top: Math.floor(0.8 * 314),
     },
-    neighbours: ["Bagdad", "Teheran", "Delhi", "Mumbaj", "Rijad"],
+    neighbors: ["Bagdad", "Teheran", "Delhi", "Mumbaj", "Rijad"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -526,7 +526,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1179),
       top: Math.floor(0.8 * 256),
     },
-    neighbours: ["Teheran", "Karaczi", "Kalkuta", "Mumbaj", "Cennaj"],
+    neighbors: ["Teheran", "Karaczi", "Kalkuta", "Mumbaj", "Cennaj"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -542,7 +542,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1273),
       top: Math.floor(0.8 * 279),
     },
-    neighbours: ["Delhi", "Hongkong", "Bangok", "Cennaj"],
+    neighbors: ["Delhi", "Hongkong", "Bangok", "Cennaj"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -558,7 +558,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1085),
       top: Math.floor(0.8 * 434),
     },
-    neighbours: ["Karaczi", "Delhi", "Cennaj"],
+    neighbors: ["Karaczi", "Delhi", "Cennaj"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -574,7 +574,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1188),
       top: Math.floor(0.8 * 436),
     },
-    neighbours: ["Mumbaj", "Delhi", "Kalkuta", "Bangok", "Dzakarta"],
+    neighbors: ["Mumbaj", "Delhi", "Kalkuta", "Bangok", "Dzakarta"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -590,7 +590,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1385),
       top: Math.floor(0.8 * 125),
     },
-    neighbours: ["Seul", "Szanghaj"],
+    neighbors: ["Seul", "Szanghaj"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -606,7 +606,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1567),
       top: Math.floor(0.8 * 116),
     },
-    neighbours: ["Szanghaj", "Pekin", "Tokio"],
+    neighbors: ["Szanghaj", "Pekin", "Tokio"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -622,7 +622,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1590),
       top: Math.floor(0.8 * 215),
     },
-    neighbours: ["Seul", "San Francisco", "Osaka", "Szanghaj"],
+    neighbors: ["Seul", "San Francisco", "Osaka", "Szanghaj"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -638,7 +638,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1392),
       top: Math.floor(0.8 * 219),
     },
-    neighbours: ["Pekin", "Seul", "Tokio", "Tajpej", "Hongkong"],
+    neighbors: ["Pekin", "Seul", "Tokio", "Tajpej", "Hongkong"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -654,7 +654,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1578),
       top: Math.floor(0.8 * 281),
     },
-    neighbours: ["Tokio", "Tajpej"],
+    neighbors: ["Tokio", "Tajpej"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -670,7 +670,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1484),
       top: Math.floor(0.8 * 331),
     },
-    neighbours: ["Osaka", "Manila", "Hongkong", "Szanghaj"],
+    neighbors: ["Osaka", "Manila", "Hongkong", "Szanghaj"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -686,7 +686,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1360),
       top: Math.floor(0.8 * 349),
     },
-    neighbours: [
+    neighbors: [
       "Kalkuta",
       "Szanghaj",
       "Tajpej",
@@ -709,7 +709,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1298),
       top: Math.floor(0.8 * 411),
     },
-    neighbours: ["Kalkuta", "Hongkong", "Cennaj", "Dzakarta", "Ho Chi Minh"],
+    neighbors: ["Kalkuta", "Hongkong", "Cennaj", "Dzakarta", "Ho Chi Minh"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -725,7 +725,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1421),
       top: Math.floor(0.8 * 484),
     },
-    neighbours: ["Bangok", "Hongkong", "Manila", "Dzakarta"],
+    neighbors: ["Bangok", "Hongkong", "Manila", "Dzakarta"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -741,13 +741,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1622),
       top: Math.floor(0.8 * 477),
     },
-    neighbours: [
-      "Hongkong",
-      "Tajpej",
-      "San Francisco",
-      "Sydney",
-      "Ho Chi Minh",
-    ],
+    neighbors: ["Hongkong", "Tajpej", "San Francisco", "Sydney", "Ho Chi Minh"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -763,7 +757,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1348),
       top: Math.floor(0.8 * 534),
     },
-    neighbours: ["Cennaj", "Bangok", "Ho Chi Minh", "Sydney"],
+    neighbors: ["Cennaj", "Bangok", "Ho Chi Minh", "Sydney"],
     hasResearchStation: false,
     diseases: {
       red: 0,
@@ -779,7 +773,7 @@ export const citiesData: City[] = [
       left: Math.floor(0.8 * 1706),
       top: Math.floor(0.8 * 719),
     },
-    neighbours: ["Dzakarta", "Manila", "San Francisco"],
+    neighbors: ["Dzakarta", "Manila", "San Francisco"],
     hasResearchStation: false,
     diseases: {
       red: 0,

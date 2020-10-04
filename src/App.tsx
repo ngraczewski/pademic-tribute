@@ -13,7 +13,6 @@ import { GameOverReason } from "./models/GameOverReason";
 import { PlayersHands } from "./components/PlayersHands";
 import { InfectionRateIndicator } from "./components/InfectionRateIndicator";
 import { OutbreaksIndicator } from "./components/OutbreaksIndicator";
-import { Modal } from "./components/Modal";
 import { DiscardCardModal } from "./components/DiscardCardModal";
 import { InfectionsIndicator } from "./components/InfectionsIndicator";
 import { EventsList } from "./components/EventsList";

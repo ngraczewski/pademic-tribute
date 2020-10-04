@@ -1,11 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
-  addPlayer,
   drawPlayerCard,
   takeDirectFlight,
   takeCharterFlight,
   buildResearchStation,
-  endTurn, discardCardAction
+  endTurn,
+  discardCardAction,
+  startGame,
 } from "../actions";
 import { Player } from "../../models/Player";
 import { CardType } from "../../models/PlayerCard";
@@ -15,23 +16,17 @@ type PlayersState = {
   current?: string;
 };
 
-const intitialState: PlayersState = {
+const initialState: PlayersState = {
   list: [],
 };
 
-export const players = createReducer(intitialState, (builder) =>
+export const players = createReducer(initialState, (builder) =>
   builder
-    .addCase(addPlayer, (state, { payload }) => {
-      const newPlayer: Player = {
-        cards: [],
-        characterName: payload.characterName,
-        playerName: payload.playerName,
-      };
-
+    .addCase(startGame, (state, { payload: { players } }) => {
       return {
         ...state,
-        list: [...state.list, newPlayer],
-        current: state.current ?? newPlayer?.playerName,
+        list: players,
+        current: players[0].playerName,
       };
     })
     .addCase(drawPlayerCard, (state, { payload: { card, playerName } }) => {
@@ -111,11 +106,11 @@ export const players = createReducer(intitialState, (builder) =>
         current: state.list[nextPlayerIndex].playerName,
       };
     })
-    .addCase(discardCardAction, (state, {payload}) => {
-      const player = state.list.find(p => p.playerName === state.current);
+    .addCase(discardCardAction, (state, { payload }) => {
+      const player = state.list.find((p) => p.playerName === state.current);
 
       if (player) {
-        player.cards = player.cards.filter(c => c.cardId !== payload.cardId)
+        player.cards = player.cards.filter((c) => c.cardId !== payload.cardId);
       }
     })
 );

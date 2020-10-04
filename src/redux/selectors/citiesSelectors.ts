@@ -43,7 +43,7 @@ export const routesSelector = createSelector(citiesSelector, (cities) =>
   uniq(
     cities
       .flatMap((city) =>
-        city.neighbours.map((neighbour) =>
+        city.neighbors.map((neighbour) =>
           [city.name, neighbour].sort().join("-")
         )
       )

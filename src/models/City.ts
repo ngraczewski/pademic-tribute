@@ -68,7 +68,7 @@ export type City = {
   name: CityName;
   color: CityColor;
   position: Position;
-  neighbours: CityName[];
+  neighbors: CityName[];
   hasResearchStation: boolean;
   diseases: {
     red: number;

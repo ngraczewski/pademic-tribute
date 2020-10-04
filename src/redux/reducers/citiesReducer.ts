@@ -6,6 +6,7 @@ import {
   treatDisease,
   setCityPosition,
   infectCity,
+  startGame,
 } from "../actions";
 
 export type CitiesDataState = {
@@ -59,6 +60,24 @@ export const citiesData = createReducer(initialState, (builder) =>
           : city
       ),
     }))
+    .addCase(startGame, (state, { payload: { infectionCards } }) => {
+      const cityNames = infectionCards.map((c) => c.cardName);
+      return {
+        ...state,
+        cities: state.cities.map((city) =>
+          cityNames.includes(city.name)
+            ? {
+                ...city,
+                diseases: {
+                  ...city.diseases,
+                  [city.color]:
+                    1 + Math.floor(cityNames.indexOf(city.name) / 3),
+                },
+              }
+            : city
+        ),
+      };
+    })
     .addCase(
       infectCity,
       (state, { payload: { cityName, disease, infectionsCount } }) => {
@@ -80,7 +99,7 @@ export const citiesData = createReducer(initialState, (builder) =>
             !outbreaks.includes(cityName)
           ) {
             outbreaks.push(cityName);
-            city.neighbours.forEach((n) => applyInfection(n, 1));
+            city.neighbors.forEach((n) => applyInfection(n, 1));
           }
 
           city.diseases[disease] = Math.min(

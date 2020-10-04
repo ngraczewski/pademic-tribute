@@ -1,11 +1,5 @@
-import {
-  PlayerCard,
-  CardType,
-  CityCard,
-  EpidemicCard,
-} from "../models/PlayerCard";
+import { PlayerCard, CardType, CityCard } from "../models/PlayerCard";
 import { citiesData } from "./cities";
-import { range } from "lodash";
 
 let cardId = 0;
 
@@ -18,14 +12,6 @@ export const playerCardsData: PlayerCard[] = [
         type: CardType.CITY,
         color: c.color,
       } as CityCard)
-  ),
-  ...range(0, 6).map(
-    () =>
-      ({
-        cardId: cardId++,
-        cardName: "Epidemic",
-        type: CardType.EPIDEMIC,
-      } as EpidemicCard)
   ),
   //   {
   //     id: cardId++,

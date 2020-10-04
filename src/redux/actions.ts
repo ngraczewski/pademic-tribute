@@ -2,10 +2,10 @@ import { createAction } from "@reduxjs/toolkit";
 import { City, CityName } from "../models/City";
 import { AppThunk } from "../app/store";
 import {
-  notUsedCharactersSelector,
   currentCharacterSelector,
+  charactersSelector,
 } from "./selectors/charactersSelectors";
-import { last, sampleSize } from "lodash";
+import { chunk, last, sampleSize, times } from "lodash";
 import {
   nonEpidemicPlayerCardsSelector,
   playerCardsSelector,
@@ -32,6 +32,7 @@ import { InfectionCard } from "../models/InfectionCard";
 import { infectionCardsSelector } from "./selectors/infectionCardsSelectors";
 import { GameOverReason } from "../models/GameOverReason";
 import { infectionsPerInfectionPhaseSelector } from "./selectors/infectionRateSelectors";
+import { Player } from "../models/Player";
 
 export const USER_ACTION = "USER_ACTION";
 export const USER_MOVE_ACTION = `${USER_ACTION}_MOVE`;
@@ -42,11 +43,6 @@ export type UserMoveActionPayload = {
   originCityName: string;
   targetCityName: string;
 };
-
-export const addPlayer = createAction<{
-  playerName: string;
-  characterName: string;
-}>("ADD_PLAYER");
 
 export const drawPlayerCard = createAction<{
   playerName: string;
@@ -95,19 +91,19 @@ export const setCityPosition = createAction<{
   position: Position;
 }>("SET_CITY_POSITION");
 
-export const discardCardAction = createAction<PlayerCard>('DISCARD_CARD');
+export const discardCardAction = createAction<PlayerCard>("DISCARD_CARD");
 
 export const endTurn = createAction("END_TURN_ACTION");
 
-export const startGame = createAction("START_GAME");
+export const startGame = createAction<{
+  players: Player[];
+  epidemicsCount: number;
+  infectionCards: InfectionCard[];
+}>("START_GAME");
 
 export const gameOver = createAction<GameOverReason>("GAME_OVER");
 
 export const intensify = createAction("INTENSIFY");
-
-export const shuffleEpidemicsIn = createAction<{
-  epidemicsCount: number;
-}>("SHUFFLE_EPIDEMICS_IN");
 
 export const startGameAction = ({
   players,
@@ -116,92 +112,33 @@ export const startGameAction = ({
   players: number;
   epidemics: number;
 }): AppThunk => (dispatch, getState) => {
-  const notUsedCharacters = notUsedCharactersSelector(getState());
-  const characters = sampleSize(notUsedCharacters, players);
+  const characters = sampleSize(charactersSelector(getState()), players);
   const nonEpidemicPlayerCards = nonEpidemicPlayerCardsSelector(getState());
   const cardsPerPlayer = Math.ceil(8 / players);
   const cardsToDraw = cardsPerPlayer * players;
   const cards = sampleSize(nonEpidemicPlayerCards, cardsToDraw);
-
-  for (let i = 0; i < players; i++) {
-    const playerName = `Player ${i + 1}`;
-    dispatch(
-      addPlayer({
-        playerName,
-        characterName: characters[i].characterName,
-      })
-    );
-    for (let j = 0; j < cardsPerPlayer; j++) {
-      dispatch(
-        drawPlayerCard({
-          playerName,
-          card: cards[i * cardsPerPlayer + j],
-        })
-      );
-    }
-  }
-
-  dispatch(
-    shuffleEpidemicsIn({
-      epidemicsCount: epidemics,
-    })
-  );
-
+  const playerDecks = chunk(cards, players);
   const infectionCards = infectionCardsSelector(getState());
 
-  for (let i = 0; i < 3; i++) {
-    const infectionCard = infectionCards[i];
-    dispatch(
-      drawInfectionCard({
-        card: infectionCard,
-      })
-    );
-    dispatch(
-      infectCityAction({
-        cityName: infectionCard.cardName,
-        disease: infectionCard.disease,
-        infectionsCount: 3,
-      })
-    );
-  }
+  const playersList: Player[] = times(players).map((i) => ({
+    playerName: `Player ${i + 1}`,
+    characterName: characters[i].characterName,
+    cards: playerDecks[i],
+  }));
 
-  for (let i = 3; i < 6; i++) {
-    const infectionCard = infectionCards[i];
-    dispatch(
-      drawInfectionCard({
-        card: infectionCard,
-      })
-    );
-    dispatch(
-      infectCityAction({
-        cityName: infectionCard.cardName,
-        disease: infectionCard.disease,
-        infectionsCount: 2,
-      })
-    );
-  }
-
-  for (let i = 6; i < 9; i++) {
-    const infectionCard = infectionCards[i];
-    dispatch(
-      drawInfectionCard({
-        card: infectionCard,
-      })
-    );
-    dispatch(
-      infectCityAction({
-        cityName: infectionCard.cardName,
-        disease: infectionCard.disease,
-        infectionsCount: 1,
-      })
-    );
-  }
-
-  dispatch(startGame());
+  dispatch(
+    startGame({
+      epidemicsCount: epidemics,
+      players: playersList,
+      infectionCards: infectionCards.slice(0, 9),
+    })
+  );
 };
 
 export const applyInfectionPhase = (): AppThunk => (dispatch, getState) => {
-  const infectionsPerInfectionPhase = infectionsPerInfectionPhaseSelector(getState());
+  const infectionsPerInfectionPhase = infectionsPerInfectionPhaseSelector(
+    getState()
+  );
   const infectionCards = infectionCardsSelector(getState());
   for (let i = 0; i < infectionsPerInfectionPhase; i++) {
     const infectionCard = infectionCards[i];
@@ -407,14 +344,14 @@ export const infectCityAction = (payload: {
 }): AppThunk => (dispatch, getState) => {
   dispatch(infectCity(payload));
 
-  const outbreaksCount = outbreaksCountSelector(getState())
+  const outbreaksCount = outbreaksCountSelector(getState());
   const diseaseSpreadTooMuch = diseaseSpreadTooMuchSelector(getState());
 
   if (outbreaksCount >= 8) {
     dispatch(gameOver(GameOverReason.GLOBAL_PANIC));
-  } 
+  }
 
   if (diseaseSpreadTooMuch) {
     dispatch(gameOver(GameOverReason.DISEASE_SPREAD_TOO_MUCH));
   }
-}
+};

@@ -15,7 +15,7 @@ export const canDriveFerryToCitySelector = (targetCityName: CityName) =>
     hasActionsLeftSelector,
     currentCitySelector,
     (hasActionsLeft, currentCity) => {
-      const isNeighbour = currentCity?.neighbours.includes(targetCityName);
+      const isNeighbour = currentCity?.neighbors.includes(targetCityName);
 
       return isNeighbour && hasActionsLeft;
     }

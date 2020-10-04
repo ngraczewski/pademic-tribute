@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC } from "react";
+import React, { CSSProperties } from "react";
 import { useSelector } from "react-redux";
 import { eventsSelector } from "../redux/selectors/eventsSelectors";
 
@@ -14,7 +14,11 @@ export const EventsList = (): JSX.Element => {
   return (
     <div style={style}>
       {events.map((e) => (
-        <div>{e}</div>
+        <div>
+          {e.map((e) => (
+            <div>{e}</div>
+          ))}
+        </div>
       ))}
     </div>
   );
