@@ -1,13 +1,7 @@
 import React, { CSSProperties } from "react";
 import { City } from "../models/City";
 import { PositionContainer } from "./PositionContainer";
-import {
-  driveOrFerryAction,
-  takeDirectFlightAction,
-  takeCharterFlightAction,
-  takePrivateFlightAction,
-  setCityPosition,
-} from "../redux/actions";
+import { setCityPosition } from "../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   canDriveFerryToCitySelector,
@@ -18,7 +12,13 @@ import {
 import { Position } from "../models/Position";
 import { Disease } from "../models/Disease";
 
-import './CityMarker.css';
+import "./CityMarker.css";
+import {
+  driveOrFerryAction,
+  takeDirectFlightAction,
+  takeCharterFlightAction,
+  takePrivateFlightAction,
+} from "../redux/actions/userThunks";
 
 type Props = {
   city: City;
@@ -72,7 +72,7 @@ export const CityMarker = ({ city }: Props): JSX.Element => {
     alignItems: "center",
     height: "25px",
     width: "25px",
-    animation: 'pulse 5s' 
+    animation: "pulse 5s",
   });
 
   const cityIndicatorStyle: CSSProperties = {

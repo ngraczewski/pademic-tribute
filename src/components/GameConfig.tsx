@@ -1,6 +1,6 @@
 import React, { CSSProperties, useState } from "react";
 import { useDispatch } from "react-redux";
-import { startGameAction } from "../redux/actions";
+import { startGameAction } from "../redux/actions/gameThunks";
 
 export const GameConfig = (): JSX.Element => {
   const [players, setPlayers] = useState(2);

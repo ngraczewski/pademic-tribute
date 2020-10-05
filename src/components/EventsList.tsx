@@ -9,12 +9,20 @@ export const EventsList = (): JSX.Element => {
     position: "absolute",
     top: 0,
     right: 0,
+    bottom: 0,
+    overflow: "auto",
+  };
+
+  const eventStyle: CSSProperties = {
+    margin: "10px",
+    padding: "10px",
+    border: "1px solid black",
   };
 
   return (
     <div style={style}>
       {events.map((e) => (
-        <div>
+        <div style={eventStyle}>
           {e.map((e) => (
             <div>{e}</div>
           ))}

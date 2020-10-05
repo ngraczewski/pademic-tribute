@@ -1,14 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { drawInfectionCard, drawPlayerCard, startGame } from "../actions";
+import {
+  endInfectionCardsPhase,
+  endPlayerCardsPhase,
+  playEpidemicCard,
+  startGame,
+} from "../actions/actions";
 
 export const events = createReducer([] as string[][], (builder) =>
   builder
-    .addCase(drawInfectionCard, (state, { payload: { card } }) => {
-      return [[`Drawn infection card ${card.cardName}`], ...state];
-    })
-    .addCase(drawPlayerCard, (state, { payload: { card } }) => {
-      return [[`Drawn player card ${card.cardName}`], ...state];
-    })
     .addCase(
       startGame,
       (state, { payload: { epidemicsCount, infectionCards, players } }) => {
@@ -25,4 +24,34 @@ export const events = createReducer([] as string[][], (builder) =>
         ];
       }
     )
+    .addCase(
+      endPlayerCardsPhase,
+      (state, { payload: { player, discardedCards, drawnCards } }) => {
+        return [
+          [
+            `Player ${player.playerName} drawn`,
+            ...drawnCards.map((c) => c.cardName),
+            ...(discardedCards.length
+              ? [`and discarded`, ...discardedCards.map((c) => c.cardName)]
+              : []),
+          ],
+          ...state,
+        ];
+      }
+    )
+    .addCase(
+      endInfectionCardsPhase,
+      (state, { payload: { infectionCards } }) => {
+        return [
+          ["Infection cards drawn", ...infectionCards.map((c) => c.cardName)],
+          ...state,
+        ];
+      }
+    )
+    .addCase(playEpidemicCard, (state, { payload: { infectionCard } }) => {
+      return [
+        ["Epidemic", `Infected city: ${infectionCard.cardName}`],
+        ...state,
+      ];
+    })
 );

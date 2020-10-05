@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  treatDiseaseAction,
-  buildResearchStationAction,
-} from "../redux/actions";
 import { currentCitySelector } from "../redux/selectors/citiesSelectors";
 import { Disease } from "../models/Disease";
 import { EndTurnButton } from "./EndTurnButton";
 import { canBuildResearchStationSelector } from "../redux/selectors/userActionsSelectors";
+import {
+  treatDiseaseAction,
+  buildResearchStationAction,
+} from "../redux/actions/userThunks";
 
 export const PlayerActions = (): JSX.Element => {
   const currentCity = useSelector(currentCitySelector);

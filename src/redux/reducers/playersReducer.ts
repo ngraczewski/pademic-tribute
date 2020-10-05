@@ -1,13 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
-  drawPlayerCard,
   takeDirectFlight,
   takeCharterFlight,
   buildResearchStation,
-  endTurn,
   discardCardAction,
   startGame,
-} from "../actions";
+  endPlayerCardsPhase,
+  endInfectionCardsPhase,
+} from "../actions/actions";
 import { Player } from "../../models/Player";
 import { CardType } from "../../models/PlayerCard";
 
@@ -27,23 +27,6 @@ export const players = createReducer(initialState, (builder) =>
         ...state,
         list: players,
         current: players[0].playerName,
-      };
-    })
-    .addCase(drawPlayerCard, (state, { payload: { card, playerName } }) => {
-      if (card.type === CardType.EPIDEMIC) {
-        return state;
-      }
-
-      return {
-        ...state,
-        list: state.list.map((p) =>
-          p.playerName === playerName
-            ? {
-                ...p,
-                cards: [...p.cards, card],
-              }
-            : p
-        ),
       };
     })
     .addCase(
@@ -88,7 +71,26 @@ export const players = createReducer(initialState, (builder) =>
         ),
       })
     )
-    .addCase(endTurn, (state) => {
+    .addCase(
+      endPlayerCardsPhase,
+      (state, { payload: { discardedCards, player, drawnCards } }) => {
+        const discardedCardIds = discardedCards.map((c) => c.cardId);
+        return {
+          ...state,
+          list: state.list.map((p) =>
+            p.playerName === player.playerName
+              ? {
+                  ...p,
+                  cards: [...p.cards, ...drawnCards]
+                    .filter((c) => c.type !== CardType.EPIDEMIC)
+                    .filter((c) => !discardedCardIds.includes(c.cardId)),
+                }
+              : p
+          ),
+        };
+      }
+    )
+    .addCase(endInfectionCardsPhase, (state) => {
       const currentPlayerName = state.current;
       const currentPlayer = state.list.find(
         (p) => p.playerName === currentPlayerName

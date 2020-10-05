@@ -1,12 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { CardType } from "../../models/PlayerCard";
-import { drawPlayerCard } from "../actions";
+import { playEpidemicCard } from "../actions/actions";
 
-export const infectionRates = [2, 2, 2,3 ,3,4, 4];
+export const infectionRates = [2, 2, 2, 3, 3, 4, 4];
 
-export const infectionRate = createReducer(0, builder => builder.addCase(drawPlayerCard, (state, {payload: {card}} ) => {
-    if (card.type === CardType.EPIDEMIC) {
-        return state + 1;
-    }
-    return state;
-}));
+export const infectionRate = createReducer(0, (builder) =>
+  builder.addCase(playEpidemicCard, (state) => state + 1)
+);

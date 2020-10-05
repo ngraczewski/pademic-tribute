@@ -1,14 +1,15 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { playerCardsData } from "../../data/playerCards";
-import { drawPlayerCard, startGame } from "../actions";
+import { endPlayerCardsPhase, startGame } from "../actions/actions";
 import { shuffle, chunk } from "lodash";
 import { CardType } from "../../models/PlayerCard";
 
 export const playerCards = createReducer(shuffle(playerCardsData), (builder) =>
   builder
-    .addCase(drawPlayerCard, (state, { payload: { card } }) =>
-      state.filter((c) => c.cardId !== card.cardId)
-    )
+    .addCase(endPlayerCardsPhase, (state, { payload: { drawnCards } }) => {
+      const drawnCardIds = drawnCards.map((c) => c.cardId);
+      return state.filter((c) => !drawnCardIds.includes(c.cardId));
+    })
     .addCase(startGame, (state, { payload: { epidemicsCount, players } }) => {
       const playerCardIds = players[0].cards.map((c) => c.cardId);
 
